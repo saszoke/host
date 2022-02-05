@@ -1,48 +1,137 @@
 <template>
 
-  <div id="app">
-    <h1 id="title">Földes Ügyvédi Iroda</h1>
-    <div class="burger-container">
-      <div></div>
-      <div class="burger">
-        <div class="line1"></div>
-        <div class="line2"></div>
-        <div class="line3"></div>
+  <div id="app" @click="clickSensor" >
+    <div class="main-thread">
+      <h1 id="title" :class="scaleClass()">Földes Ügyvédi Iroda</h1>
+      <div class="burger-container">
+        <div></div>
+
+        <div class="burger nav" @click="openNav" v-bind:class="{ toggle: navToggled}">
+          <div class="line1 nav"></div>
+          <div class="line2 nav"></div>
+          <div class="line3 nav"></div>
+        </div>
       </div>
-    </div>
 
-    <div id="nav">
+      <div id="nav" class="nav" >
 
-      <ul class="nav-links">
-        <li>
-          <router-link to="/">Home</router-link>
-        </li>
+        <transition
+          @before-enter="beforeEnter"
+          @enter="enter"
+          @before-leave="beforeLeave"
+          @leave="leave"
+          >
+            <transition-group 
+                  @before-enter="beforeEnter"
+                  @enter="enter"
+                  @before-leave="beforeLeave"
+                  @leave="leave"
+                  appear
+                  tag="ul"
+                  class="nav nav-links"
+                  v-bind:class="{ navActive: navToggled}" v-if="navToggled"
+                >
+              <li class="nav" v-for="(menu, index) in menus" :key="menu.id" :data-index="index">
+                <router-link 
+                  :to="menu.url" 
+                  class="nav route"
+                  
+                  >
+                {{ menu.name }}
+                </router-link>
+              </li>
+            </transition-group>
+        </transition>
+      </div>
 
-        <li>
-          <router-link to="/about">About</router-link>
-        </li>
-
-        <li>
-          <router-link to="/contact">Contact</router-link>
-        </li>
-
-        <li>
-          <router-link to="/associates">Attorneys</router-link>
-        </li>
-
-        <li>
-          <router-link to="/practices">Practices</router-link>
-        </li>
-      </ul>
-    </div>
-
-    
       <transition name="route" mode="out-in">
-        <router-view/>
+        <router-view :class="blurrClass()"/>
       </transition>
+    </div>
+
+    <div class="intro-thread">
+
+    </div>
     
   </div>
 </template>
+
+<script>
+import gsap from 'gsap'
+export default {
+
+  data: function () {
+      return {
+        navToggled: false,
+        menus: [
+          {name: 'Home', id: 0, url: '/'},
+          {name: 'About', id: 1, url: '/about'},
+          {name: 'Practices', id: 2, url: '/practices'},
+          {name: 'Attorneys', id: 3, url: '/associates'},
+          {name: 'Contact', id: 4, url: '/contact'}],
+
+        beforeEnter: (el) => {
+            el.style.opacity = 0
+            el.style.transform = 'translateX(100px)'
+            },
+        enter: (el, done) => {
+            gsap.to(el, {
+                opacity: 1,
+                x: 0,
+                duration: 0.8,
+                onComplete: done,
+                delay: el.dataset.index * 0.2,
+            })
+        },
+        beforeLeave: (el) => {
+            el.style.opacity = 1
+            el.style.transform = 'translateX(0)'
+            },
+        leave: (el, done) => {
+            gsap.to(el, {
+                opacity: 0,
+                x: 100,
+                duration: 0.8,
+                onComplete: done,
+                delay: el.dataset.index * 0.2
+            })
+        }
+      }
+    },
+
+  methods: {
+
+    openNav(){
+      this.navToggled = !this.navToggled
+    },
+    blurred(){
+      return this.navToggled ? {
+        'filter': 'filter:blur(3px)',
+        '-webkit-filter': 'blur(3px)'
+      } : {
+        'filter': 'filter:blur(0)',
+        '-webkit-filter': 'blur(0)'
+      }
+    },
+
+    blurrClass(){
+      return this.navToggled ? { 'blurred': true } : { 'blurred': false, 'unblurred': true }
+    },
+
+    scaleClass(){
+      return this.navToggled ? { 'scaled': true } : { 'scaled': false, 'unscaled': true }
+    },
+
+    clickSensor(event){
+      if (this.navToggled){
+        if (!event.target.classList.contains("nav") || event.target.classList.contains("route")){
+          this.navToggled = !this.navToggled
+        }
+      }
+    }
+  }
+}
+</script>
 
 <style lang="scss">
 #app {
@@ -50,6 +139,7 @@
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  height: 100vh;
 }
 #title{
   padding: 10%;
@@ -99,10 +189,9 @@ li{
 
 body{
   overflow-x: hidden;
-  font-family: 'WindSong', cursive;
+  font-family: 'WindSong', cursive;                                     
+                    
 }
-
-
 
 .nav-links{
   position: absolute;
@@ -116,8 +205,7 @@ body{
   flex-direction: column;
   align-items: center;
   width: 50%;
-  transform: translateX(100%);
-  transition: transform 0.25s ease-in;
+
 }
 
 .nav-links li{
@@ -127,23 +215,9 @@ body{
 
 }
 
-.nav-active{
-  transform: translateX(0%);
-}
-
-@keyFrames navLinkFade{
-  from{
-    opacity: 0;
-    transform: translateX(50px);
-  }
-  to{
-    opacity: 1;
-    transform: translateX(0px);
-  }
-}
-
 .toggle .line1{
   transform: rotate(-45deg) translate(-5px,9px);
+  background-color: white;
 }
 
 .toggle .line2{
@@ -152,6 +226,7 @@ body{
 
 .toggle .line3{
   transform: rotate(45deg) translate(-5px,-9px);
+  background-color: white;
 }
 
 .route-enter {
@@ -172,6 +247,33 @@ body{
   transition: all .25s ease-in; 
 }
 
+.blurred{
+  filter: blur(3px);
+  -webkit-filter: blur(3px);
+  transition: all 0.8s ease;
+}
+.unblurred{
+  filter: blur(0px);
+  -webkit-filter: blur(0px);
+  transition: all 0.8s ease;
+}
 
+.scaled{
+  transform: scale(1.075,1.075);
+  transition: all 0.8s ease;
+}
+.unscaled{
+  transform: scale(1.0,1.0);
+  transition: all 0.8s ease;
+}
+
+@keyframes blurAnimate {
+    // 0% { -webkit-filter: blur(0px); filter: blur(0px);}
+    // 25% { -webkit-filter: blur(1px); filter: blur(1px);}
+    // 50% { -webkit-filter: blur(2px); filter: blur(2px);}
+    // 100% { -webkit-filter: blur(3px); filter: blur(3px);}
+    from { filter: blur(0px)}
+    to { filter: blur(5px)}
+}
 
 </style>
