@@ -1,56 +1,87 @@
 <template>
-
   <div id="app" @click="clickSensor" >
+
     <div class="main-thread">
-      <h1 id="title" :class="scaleClass()">Földes Ügyvédi Iroda</h1>
-      <div class="burger-container">
-        <div></div>
 
-        <div class="burger nav" @click="openNav" v-bind:class="{ toggle: navToggled}">
-          <div class="line1 nav"></div>
-          <div class="line2 nav"></div>
-          <div class="line3 nav"></div>
-        </div>
-      </div>
-
-      <div id="nav" class="nav" >
+      <div class="head">
 
         <transition
-          @before-enter="beforeEnter"
-          @enter="enter"
-          @before-leave="beforeLeave"
-          @leave="leave"
-          >
-            <transition-group 
-                  @before-enter="beforeEnter"
-                  @enter="enter"
-                  @before-leave="beforeLeave"
-                  @leave="leave"
-                  appear
-                  tag="ul"
-                  class="nav nav-links"
-                  v-bind:class="{ navActive: navToggled}" v-if="navToggled"
+                @before-enter="beforeTitleEnter"
+                @enter="titleEnter"
+                appear
                 >
-              <li class="nav" v-for="(menu, index) in menus" :key="menu.id" :data-index="index">
-                <router-link 
-                  :to="menu.url" 
-                  class="nav route"
-                  
-                  >
-                {{ menu.name }}
-                </router-link>
-              </li>
-            </transition-group>
+          <h1 id="title" :class="scaleClass()">Földes Ügyvédi Iroda</h1>
         </transition>
+
       </div>
 
-      <transition name="route" mode="out-in">
-        <router-view :class="blurrClass()"/>
+      <transition
+        @before-enter="beforeBodyEnter"
+        @enter="bodyEnter"
+        appear
+        >
+        <div class="body">
+          <div class="burger-container">
+            <div></div>
+
+            <div class="burger nav" @click="openNav" v-bind:class="{ toggle: navToggled}">
+              <div class="line1 nav"></div>
+              <div class="line2 nav"></div>
+              <div class="line3 nav"></div>
+            </div>
+          </div>
+
+          <div id="nav" class="nav" >
+
+            <transition
+              @before-enter="beforeEnter"
+              @enter="enter"
+              @before-leave="beforeLeave"
+              @leave="leave"
+              >
+                <transition-group 
+                      @before-enter="beforeEnter"
+                      @enter="enter"
+                      @before-leave="beforeLeave"
+                      @leave="leave"
+                      appear
+                      tag="ul"
+                      class="nav nav-links"
+                      v-bind:class="{ navActive: navToggled}"
+                      v-if="navToggled"
+                    >
+                  <li class="nav" v-for="(menu, index) in menus" :key="menu.id" :data-index="index">
+                    <router-link 
+                      :to="menu.url" 
+                      class="nav route"
+                      
+                      >
+                    {{ menu.name }}
+                    </router-link>
+                  </li>
+                </transition-group>
+            </transition>
+          </div>
+
+          <transition name="route" mode="out-in">
+            <router-view :class="blurrClass()"/>
+          </transition>
+        </div>
       </transition>
     </div>
+      
 
     <div class="intro-thread">
-
+        <transition-group
+          @before-enter="beforeIntroEnter"
+          @enter="introEnter"
+          appear
+          tag="ul"
+          >
+          <li v-for="(introKey, index) in introKeys" :key="introKey.id" :data-introindex="index">
+            {{ introKey.name }}
+          </li>
+        </transition-group>
     </div>
     
   </div>
@@ -64,11 +95,18 @@ export default {
       return {
         navToggled: false,
         menus: [
-          {name: 'Home', id: 0, url: '/'},
-          {name: 'About', id: 1, url: '/about'},
-          {name: 'Practices', id: 2, url: '/practices'},
-          {name: 'Attorneys', id: 3, url: '/associates'},
-          {name: 'Contact', id: 4, url: '/contact'}],
+          {name: 'Kezdőoldal', id: 0, url: '/'},
+          {name: 'Rólunk', id: 1, url: '/about'},
+          {name: 'Praktikák', id: 2, url: '/practices'},
+          {name: 'Ügyvédeink', id: 3, url: '/associates'},
+          {name: 'Kapcsolat', id: 4, url: '/contact'}
+          ],
+        introKeys: [
+          {name: 'Bizalom', id: 0},
+          {name: 'Szakértelem', id: 1},
+          {name: 'Kiválóság', id: 2}
+        ],
+        introPlayed: true,
 
         beforeEnter: (el) => {
             el.style.opacity = 0
@@ -94,6 +132,62 @@ export default {
                 duration: 0.8,
                 onComplete: done,
                 delay: el.dataset.index * 0.2
+            })
+        },
+
+
+        beforeIntroEnter: (el) => {
+            el.style.opacity = 0
+            el.style.transform = 'translateY(-275px)'
+            },
+        introEnter: (el,done) =>{
+          gsap.timeline()
+          .to(el, {
+            keyframes : {
+
+
+              "15%": {opacity: .25},
+              "25%": {opacity: .5},
+              "35%": {opacity: 1},
+              "45%": {opacity: 0.5},
+              "55%": {opacity: 0},
+              "100%": {y: -550, display: 'none'}
+            },
+                duration: 6,
+                onComplete: done,
+                delay: el.dataset.introindex * 1.25 + .5
+          })
+        },
+        beforeTitleEnter: (el) => {
+            el.style.opacity = 0
+            // el.style.transform = 'translate(100px)'
+            },
+        titleEnter: (el, done) => {
+            gsap.to(el, {
+                keyframes : {
+                  "15%": {opacity: .15},
+                  "45%": {opacity: .45},
+                  "75%": {opacity: .75},
+                  "100%": {opacity: 1}
+                },
+                duration: 3,
+                onComplete: done,
+                delay: 4.5
+            })
+        },
+
+        beforeBodyEnter: (el) => {
+                    el.style.opacity = 0
+                    el.style.transform = 'translate(100px)'
+                    },
+
+        bodyEnter: (el, done) => {
+            gsap.to(el, {
+              opacity: 1,
+              x: 0,
+              duration: 0.8,
+              onComplete: done,
+              delay: 7.25
             })
         }
       }
@@ -199,7 +293,7 @@ body{
   padding: 30px;
   right: 0px;
   height: 100vh;
-  top: 24vh;
+  top: 12vh;
   background-color: #5D4954;
   display: flex;
   flex-direction: column;
@@ -267,13 +361,13 @@ body{
   transition: all 0.8s ease;
 }
 
-@keyframes blurAnimate {
-    // 0% { -webkit-filter: blur(0px); filter: blur(0px);}
-    // 25% { -webkit-filter: blur(1px); filter: blur(1px);}
-    // 50% { -webkit-filter: blur(2px); filter: blur(2px);}
-    // 100% { -webkit-filter: blur(3px); filter: blur(3px);}
-    from { filter: blur(0px)}
-    to { filter: blur(5px)}
+.intro-thread{
+  margin-top: 45%;
+  font-size: 2rem;
+  font-weight: 550;
+}
+#title{
+  opacity: 0;
 }
 
 </style>
