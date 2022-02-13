@@ -1,19 +1,40 @@
 <template>
-  <div id="app" @click="clickSensor" >
+    <v-app>
+      <v-main>
 
-    <div class="main-thread">
+      <v-banner
+        sticky
+        color="blue-grey darken-2"
+        dark
+        elevation="16"
+      >
+        
+      <div class="d-flex justify-space-between">
 
-      <div class="head">
+        <h1 class="py-6">Földes Ügyvédi Iroda</h1>
+        <v-menu transition="slide-x-transition">
+          <template v-slot:activator="{ on, attrs }">
 
-        <transition
-                @before-enter="beforeTitleEnter"
-                @enter="titleEnter"
-                appear
-                >
-          <h1 id="title" :class="scaleClass()">Földes Ügyvédi Iroda</h1>
-        </transition>
+            <v-app-bar-nav-icon
+              v-bind="attrs"
+              v-on="on"
+              class="my-4"
+            ></v-app-bar-nav-icon>
+          </template>
 
+          <v-list>
+            <v-list-item
+              v-for="(item, i) in menus"
+              :key="i"
+            >
+              <v-list-item-title>{{ item.name }}</v-list-item-title>
+            </v-list-item>
+          </v-list>
+        </v-menu>
       </div>
+      
+      </v-banner>
+
 
       <transition
         @before-enter="beforeBodyEnter"
@@ -21,75 +42,38 @@
         appear
         >
         <div class="body">
-          <div class="burger-container">
-            <div></div>
 
-            <div class="burger nav" @click="openNav" v-bind:class="{ toggle: navToggled}">
-              <div class="line1 nav"></div>
-              <div class="line2 nav"></div>
-              <div class="line3 nav"></div>
-            </div>
-          </div>
+          <Home />
+          <About />
+          <Associates />
+          <Practices />
+          <Contact />
 
-          <div id="nav" class="nav" >
-
-            <transition
-              @before-enter="beforeEnter"
-              @enter="enter"
-              @before-leave="beforeLeave"
-              @leave="leave"
-              >
-                <transition-group 
-                      @before-enter="beforeEnter"
-                      @enter="enter"
-                      @before-leave="beforeLeave"
-                      @leave="leave"
-                      appear
-                      tag="ul"
-                      class="nav nav-links"
-                      v-bind:class="{ navActive: navToggled}"
-                      v-if="navToggled"
-                    >
-                  <li class="nav" v-for="(menu, index) in menus" :key="menu.id" :data-index="index">
-                    <router-link 
-                      :to="menu.url" 
-                      class="nav route"
-                      
-                      >
-                    {{ menu.name }}
-                    </router-link>
-                  </li>
-                </transition-group>
-            </transition>
-          </div>
-
-          <transition name="route" mode="out-in">
-            <router-view :class="blurrClass()"/>
-          </transition>
         </div>
       </transition>
-    </div>
-      
-
-    <div class="intro-thread">
-        <transition-group
-          @before-enter="beforeIntroEnter"
-          @enter="introEnter"
-          appear
-          tag="ul"
-          >
-          <li v-for="(introKey, index) in introKeys" :key="introKey.id" :data-introindex="index">
-            {{ introKey.name }}
-          </li>
-        </transition-group>
-    </div>
-    
-  </div>
+          </v-main>
+    </v-app>
 </template>
 
 <script>
 import gsap from 'gsap'
+import Contact from '@/views/Contact.vue'
+import About from '@/views/About.vue'
+import Home from '@/views/Home.vue'
+import Practices from '@/views/Practices.vue'
+import Associates from '@/views/Associates.vue'
+
+
 export default {
+
+  components: {
+    Contact,
+    About,
+    Home,
+    Practices,
+    Associates
+  },
+  
 
   data: function () {
       return {
@@ -101,12 +85,6 @@ export default {
           {name: 'Ügyvédeink', id: 3, url: '/associates'},
           {name: 'Kapcsolat', id: 4, url: '/contact'}
           ],
-        introKeys: [
-          {name: 'Bizalom', id: 0},
-          {name: 'Szakértelem', id: 1},
-          {name: 'Kiválóság', id: 2}
-        ],
-        introPlayed: true,
 
         beforeEnter: (el) => {
             el.style.opacity = 0
@@ -134,48 +112,6 @@ export default {
                 delay: el.dataset.index * 0.2
             })
         },
-
-
-        beforeIntroEnter: (el) => {
-            el.style.opacity = 0
-            el.style.transform = 'translateY(-275px)'
-            },
-        introEnter: (el,done) =>{
-          gsap.timeline()
-          .to(el, {
-            keyframes : {
-
-
-              "15%": {opacity: .25},
-              "25%": {opacity: .5},
-              "35%": {opacity: 1},
-              "45%": {opacity: 0.5},
-              "55%": {opacity: 0},
-              "100%": {y: -550, display: 'none'}
-            },
-                duration: 6,
-                onComplete: done,
-                delay: el.dataset.introindex * 1.25 + .5
-          })
-        },
-        beforeTitleEnter: (el) => {
-            el.style.opacity = 0
-            // el.style.transform = 'translate(100px)'
-            },
-        titleEnter: (el, done) => {
-            gsap.to(el, {
-                keyframes : {
-                  "15%": {opacity: .15},
-                  "45%": {opacity: .45},
-                  "75%": {opacity: .75},
-                  "100%": {opacity: 1}
-                },
-                duration: 3,
-                onComplete: done,
-                delay: 4.5
-            })
-        },
-
         beforeBodyEnter: (el) => {
                     el.style.opacity = 0
                     el.style.transform = 'translate(100px)'
@@ -186,8 +122,7 @@ export default {
               opacity: 1,
               x: 0,
               duration: 0.8,
-              onComplete: done,
-              delay: 7.25
+              onComplete: done
             })
         }
       }
@@ -283,7 +218,7 @@ li{
 
 body{
   overflow-x: hidden;
-  font-family: 'WindSong', cursive;                                     
+  font-family: 'Libre Baskerville';                                     
                     
 }
 
@@ -365,9 +300,6 @@ body{
   margin-top: 45%;
   font-size: 2rem;
   font-weight: 550;
-}
-#title{
-  opacity: 0;
 }
 
 </style>

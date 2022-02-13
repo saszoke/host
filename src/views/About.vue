@@ -1,5 +1,5 @@
 <template>
-  <div class="contact">
+  <div>
     <AboutComponent msg="This is an ABOUT page."/>
   </div>
 </template>

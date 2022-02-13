@@ -1,67 +1,79 @@
 <template>
 
         <v-container>
-            <div>Hello, this is a CONTACT page.</div>
-            <p>
-                Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae.
-            </p>
+                <v-divider></v-divider>
+                    <v-sheet elevation="16">
+                        <h3 class="text-h5 my-5 pa-2 blue-grey darken-2  white--text">Elérhetőségünk</h3>
+                    </v-sheet>
+                <v-divider class="my-5"></v-divider>
+            <v-footer
+                dark
+                padless
+            >
+                <v-card
+                flat
+                tile
+                class="blue-grey darken-2 white--text text-center"
+                >
+                <v-card-text>
+                    <v-btn
+                    v-for="icon in icons"
+                    :key="icon"
+                    class="mx-4 white--text"
+                    icon
+                    >
+                    <v-icon size="24px">
+                        {{ icon }}
+                    </v-icon>
+                    </v-btn>
+                </v-card-text>
+
+                <v-divider></v-divider>
+
+                <v-card-text class="white--text pt-0">
+                    Duis commodo vitae velit et faucibus. Morbi vehicula lacinia malesuada. Nulla placerat augue vel ipsum ultrices, cursus iaculis dui sollicitudin. Vestibulum eu ipsum vel diam elementum tempor vel ut orci. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
+                </v-card-text>
+
+                <v-divider></v-divider>
+
+                <v-card-text class="white--text pt-0">
+                    {{contact[0].name}} {{ contact[0].meta}}
+                </v-card-text>
+                <v-card-text class="white--text pt-0">
+                    {{contact[1].name}} {{ contact[1].meta}}
+                </v-card-text>
+                <v-divider></v-divider>
+                <v-card-text class="white--text pt-0">
+                    {{ address.zip }} {{ address.city }} {{ address.street }} {{ address.number }}
+                </v-card-text>
+                <v-img :src="address.mapRef"></v-img>
+                <v-divider></v-divider>
+
+                <v-card-text class="white--text">
+                    {{ new Date().getFullYear() }} — <strong>Földes ügyvédi iroda</strong>
+                </v-card-text>
+                <v-card-text class="white--text">
+                    <strong>Minden jog fenntartva</strong>
+                </v-card-text>
+                </v-card>
+            </v-footer>
         </v-container>
 
 
 </template>
 
 <script>
-  import gsap from 'gsap'
+    export default {
+        name: 'Contact',
+        props: ['contact', 'address'],
 
-  export default {
-    name: 'Contact',
-
-    data: () => ({
-        beforeEnter: (el) => {
-            console.log('before enter - set intial state')
-            el.style.transform = 'translateY(-60px)'
-            el.style.opacity = 0
-            },
-        enter: (el, done) => {
-            console.log('starting to enter - make transition')
-            gsap.to(el, {
-                duration: 1,
-                y: 0,
-                opacity: 1,
-                ease: 'bounce.out',
-                onComplete: done
-            })
-        }
-    }),
-    // mounted: function () {
-    //         console.log('Called before mount.', Object.keys(this))
-    //         console.log(this)
-    //         this.$el.style.transform = 'translateY(-60px)'
-    //         this.$el.style.opacity = 0
-    //     }
-
-    // beforeEnter: (el) => {
-    //   console.log('before enter - set intial state')
-    //   el.style.transform = 'translateY(-60px)'
-    //   el.style.opacity = 0
-    // },
-
-    // enter: (el, done) => {
-    //   console.log('starting to enter - make transition')
-    //   gsap.to(el, {
-    //     duration: 1,
-    //     y: 0,
-    //     opacity: 1,
-    //     ease: 'bounce.out',
-    //     onComplete: done
-    //   })
-    // }
-
-        // <transition
-        // appear
-        // @before-enter="beforeEnter"
-        // @enter="enter"
-        // >   
-        // </transition>
-  }
+        data: () => ({
+            icons: [
+                'mdi-facebook',
+                'mdi-twitter',
+                'mdi-linkedin',
+                'mdi-instagram',
+            ],
+        })
+    }
 </script>
