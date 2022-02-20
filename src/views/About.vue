@@ -1,6 +1,6 @@
 <template>
   <div>
-    <AboutComponent msg="This is an ABOUT page."/>
+    <AboutComponent :images="images"/>
   </div>
 </template>
 
@@ -12,6 +12,14 @@ export default {
   name: 'About',
   components: {
     AboutComponent
+  },
+
+  data: ()=>{
+    return {
+      images: {
+        building: "./building.jpg"
+      }
+    }
   }
 }
 </script>

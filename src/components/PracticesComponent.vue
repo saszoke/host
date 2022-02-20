@@ -1,45 +1,36 @@
 <template>
-  <v-container>
-    <v-divider></v-divider>
-      <v-sheet elevation="16">
-        <h3 class="text-h5 my-5 pa-2 blue-grey darken-2  white--text">Szakterületeink</h3>
-      </v-sheet>
-    <v-divider class="my-5"></v-divider>
+  <v-container id="practices">
+        <h3 class="text-h5 brown--text text--lighten-1  my-5 pa-2 borderY font-weight-bold">Szakterületeink</h3>
 
-    <v-alert
-      text
-      color="blue-grey darken-2"
-      v-for="speciality in specialities" :key="speciality.header"
-    >
-      <h5 class="text-h5 ma-3 font-weight-bold">
-        {{speciality.header}}
-      </h5>
-      <div>
-        {{speciality.body}}
-      </div>
-
-      <v-divider
-        class="my-4 blue-grey darken-2"
-        style="opacity: 0.22"
-      ></v-divider>
-
-      <v-row
-        align="center"
-        no-gutters
+    <v-list>
+      <v-list-group
+        v-for="speciality in specialities" :key="speciality.mainTheme" class="my-5" active-class="orange--text text--lighten-4 grey"
       >
+        <template v-slot:activator>
+          <v-list-item-title class="text-justify py-5">{{ speciality.mainTheme }}</v-list-item-title>
+        </template>
 
-          <v-btn
-            color="teal"
-            outlined
-            block
+          <v-list-group
+            sub-group
+            active-class="grey--text orange lighten-4"
+            v-for="subSpec in speciality.subThemes" :key="subSpec.title"
           >
-            Ügyvédet
-          </v-btn>
-      </v-row>
-    </v-alert>
+            <template v-slot:activator>
+              <v-list-item-content>
+                <v-list-item-title class="text-justify grey--text text--darken-2">{{ subSpec.title }}</v-list-item-title>
+              </v-list-item-content>
+            </template>
+
+            <v-list-item-group
+              link
+            >
+              <div v-text="subSpec.body" class="text-justify ma-5 white--text text--lighten-4 grey pa-3 rounded-sm"></div>
+            </v-list-item-group>
+          </v-list-group>
 
 
-    
+      </v-list-group>
+    </v-list>
   </v-container>
 </template>
 
@@ -50,4 +41,8 @@
 
     data: () => ({}),
   }
+
+
+
+
 </script>
