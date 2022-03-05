@@ -7,9 +7,58 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <link rel="icon" href="<%= BASE_URL %>favicon.ico">
     <title><%= htmlWebpackPlugin.options.title %></title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100;200;300;400;500;900&display=swap" rel="stylesheet"> -->
+    <link rel="preload" href="myFont.woff2" as="font"
+      type="font/woff2" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font@latest/css/materialdesignicons.min.css">
+    <style>
+      .parallax {
+        /* Set a specific height */
+        min-height: 100px;
+      
+        /* Create the parallax scrolling effect */
+        background-attachment: fixed;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
+      .parallaxxx {
+        /* Set a specific height */
+        min-height: 50px;
+        max-height: 100px;
+      
+        /* Create the parallax scrolling effect */
+        background-attachment: fixed;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
+      .pic1{
+        background-image: url('officeInside.jpg');
+      }
 
+      .pic2{
+        background-image: url('building.jpg');
+      }
+      .pic3{
+        background-image: url('mosaique2.jpg');
+      }
+      @media screen and (max-width: 600px) {
+        .parallaxxx {
+        /* Set a specific height */
+        min-height: 25px;
+        max-height: 50px;
+      
+        /* Create the parallax scrolling effect */
+        background-attachment: fixed;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
+      }
+      </style>
 
   </head>
   
@@ -17,6 +66,7 @@
     <noscript>
       <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
     </noscript>
+    <!-- <div class="parallax"></div> -->
     <div id="app">
       <v-app>
         <v-main>
@@ -24,7 +74,7 @@
         </v-main>
       </v-app>
     </div>
-
+    
     <!-- built files will be auto injected -->
     <!-- <script src="./nav.js"> </script> -->
   </body>

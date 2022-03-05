@@ -1,5 +1,5 @@
 <template>
-  <div class="contact">  
+  <div>  
     <ContactComponent :contact="contactMethods" :address="address"/>
   </div>
 </template>
@@ -19,7 +19,7 @@ export default {
       contactMethods: [
 
         {name: "phone", meta: "+52 554 442", icon: 'phone-outline'},
-        {name: "email", meta: "foldesugyvediiroda@foldes.hu", icon: "email-multiple-outline"},
+        {name: "email", meta: "foldespeter@foldeslegal.hu", icon: "email-multiple-outline"},
         {name: "address", meta: "4024 Debrecen 5 Piac street", icon: "map-marker-outline"}
       ],
       address: {
