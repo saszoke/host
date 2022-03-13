@@ -1,10 +1,10 @@
 <template>
 
-  <v-container fluid ma-0 pa-0 @scroll.passive="passiveScroll" id="associates" style="background-color: #fff;">
+  <v-container fluid ma-0 pa-0 @scroll.passive="passiveScroll" id="associates" class="borderY">
     <div></div>
       <div class="parallaxxx pic3"></div>
-      <h3 class="text-h5 text-md-h4 text-xl-h3 borderY pa-2 px-md-10 px-xl-15 text-justify" style="color: #BEAF67">Ügyvédeink</h3>
-      <div class="d-flex flex-column flex-md-row justify-md-center">
+      <h3 class="text-h5 text-md-h4 text-xl-h3 borderY pa-2 px-md-5 px-lg-10 px-xl-15 text-justify" style="color: #BEAF67">Ügyvédeink</h3>
+      <div class="d-flex flex-column flex-md-row justify-md-center my-3 my-lg-7">
         <div class="my-5 my-lg-0 mx-auto" style="color: #BEAF67;" v-for="lawyer in lawyers" :key="lawyer.name">
           <div class="pa-1 text-h6 text-md-h5 text-xl-h4 text-justify rounded-tl-xl">{{ lawyer.name }}</div>
           <div class="custom-border customFrameOverload">

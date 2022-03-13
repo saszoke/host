@@ -1,5 +1,5 @@
 <template>
-  <v-container id="about" fluid ma-0 pa-0 style="background-color: #fff;">
+  <v-container id="about" fluid ma-0 pa-0 class="borderY">
     <div class="parallax pic2"></div>
     <!-- <div class="parallaxxx pic3"></div> -->
     <h3 class="text-h5 text-md-h4 text-xl-h3 borderY pa-2 px-md-10 px-xl-15 text-justify" style="color: #BEAF67">Rólunk</h3>
@@ -10,27 +10,21 @@
         :src="images.building"
       >
       </v-img> -->
-      <div class="body-2 text-xl-body-1 my-1 font-weight-bold text-uppercase text-justify " style="color: #0A4770;" >similique sunt in culpa qui officia</div>
-      <div class="body-2 text-xl-body-1 my-1 text-justify" style="color: #0A4770;">
-                Üzleti megoldás és innovatív hozzáállás, helyi piacismeret és globális tudás
+      <!-- <div class="body-2 text-xl-body-1 my-1 font-weight-bold text-uppercase text-justify " style="color: #0A4770;" >similique sunt in culpa qui officia</div> -->
+      <div class="body-2 text-xl-body-1 my-3 text-justify" style="color: #0A4770;">
 
-        Irodánkat Dr. Köves Péter alapította 1991-ben. Két évvel később az öt londoni prémium ügyvédi irodából álló „Magic Circle”-be tartozó Clifford Chance budapesti irodája lettünk, ahonnan 2009-ben váltunk ki. Azóta Lakatos, Köves és Társai néven, Dr. Lakatos Péter vezetésével független ügyvédi irodaként, ám nemzetközi jellegünket megőrizve működünk.
-
-        Szellemi műhelyünkben folyó munkánkra és szaktudásunkra a nemzetközi irodákban megszokott profizmus, bonyolult jogi kérdések gyakorlatorientált és főleg üzleti megközelítése jellemző. Az érvényes jogi keretek között nagyon sokszor innovatív és új javaslatokkal élünk. Nyitott és kreatív gondolkodásunknak köszönhetően számos kifinomult jogintézmény magyarországi meghonosításában vettünk részt.
-
-              </div>
+Ügyvédi irodánk 26 éve Debrecenben működő immár két generációs vállalkozás. Ügyfeleink nemcsak Debrecenből és környékéről, hanem szinte az ország egész területéről keresnek bennünket az ügyeik vitele és azok megoldása érdekében. 
+</div>
 
     </v-container>
     <div class="parallax pic1 mt-md-5"></div>
     <v-container>
-      <div class="body-2 text-xl-body-1 my-1 text-justify  my-md-5" style="color: #0A4770;">
+      <div class="body-2 text-xl-body-1 my-3 text-justify  my-md-5" style="color: #0A4770;">
 
-        Megbízóink Magyarországon aktív multinacionális közép- és nagyvállalatok, valamint a világ legnagyobb és leghíresebb ügyvédi irodái.
+        Büszkék vagyunk rá, hogy ügyfeleink rendszerint visszatérnek hozzánk és tartósan ránk bízzák ügyeik vitelét. Nem csak az irodánk, hanem az ügyfélkörünk is kétgenerációssá vált az idők során.   
 
-        Ezért egyformán otthon vagyunk, ha határon átnyúló tranzakciókon nemzetközi csapatban dolgozunk, és akkor is, ha helyi piacismeretünknek köszönhetően speciális magyar jogi problémákat kell megoldanunk.
-      
-        Nagy gyakorlattal rendelkezünk jogi és szabályozási munkák előkészítésében is. Ügyvédeink német, angol, francia, olasz, orosz, spanyol, kínai és japán nyelven is nyújtanak jogi tanácsadást.
-              </div>
+Forduljon bizalommal hozzánk, mert a következőket nyújtjuk Önnek: figyelmet, precízitást, diszkréciót, koncentrációt, megoldást találva a jogi problémájára, szakmai felkészültséget és  több mint két évtizednyi tapasztalatot a jogi problémák kezelésében. Ügyvédi munkadíjainkat rugalmasan az ügy jellegéhez igazítjuk.
+</div>
 
     </v-container>
 

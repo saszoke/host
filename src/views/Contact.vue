@@ -1,7 +1,8 @@
 <template>
   <div>  
-    <ContactComponent :contact="contactMethods" :address="address"/>
+    <ContactComponent :contact="contactMethods" :address="address" :copyIcon="copyIcon" @childAlert="$emit('childAlert',$event)" @childCall="$emit('childCall', 'tel:+52554442')"/>
   </div>
+
 </template>
 
 <script>
@@ -13,6 +14,7 @@ export default {
   components: {
     ContactComponent
   },
+  props: ['copyIcon'],
 
   data: ()=>{
     return {
