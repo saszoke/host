@@ -51,7 +51,14 @@ const routes = [
 const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
-  routes
+  routes,
+  scrollBehavior(to, from, savedPosition) {
+    // always scroll 10px above the element #main
+    console.log(to,from,savedPosition)
+    if (savedPosition) {
+      return savedPosition
+    }
+  }
 })
 
 export default router

@@ -227,8 +227,10 @@ export default {
 
   methods: {
     doneScroll(elem){
+      // console.log(top)
       try{
-        this.$router.push(`/${elem.id}`);
+        // this.$router.push(`/${elem.id}`);
+        console.log('skipping router push',elem)
       } catch(err){
         console.log('Rerouting avoided. Already on route.')
       }
@@ -262,8 +264,6 @@ export default {
 
 
       setTimeout(() => {
-        // this.copyIcon = 'far fa-copy'
-        // event.target.classList.toggle('fas')
         document.querySelectorAll('.copy').forEach(copyElement => {
           copyElement.classList.remove('fas')
         })
