@@ -1,5 +1,5 @@
 <template>
-  <div class="home">
+  <div class="home" ref="home">
     <HomeComponent picRef="./lawyerGroup.jpg"/>
   </div>
 </template>

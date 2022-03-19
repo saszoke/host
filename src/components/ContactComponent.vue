@@ -1,27 +1,23 @@
 <template>
-        <v-container fluid ma-0 pa-0   id="contact">
+
+        <v-container fluid ma-0 pa-0  id="contact">
                 <div class="parallaxxx pic3"></div>
-            <h3 class="text-h5 text-md-h4 text-xl-h3 borderY pa-2 px-md-5 px-lg-10 px-xl-15 text-justify" style="color: #BEAF67">Elérhetőségünk</h3>
         <v-snackbar v-model="snackbar" :timeout="timeout" color="#115874">
-          <div class="text-center button">
-            Copied to clipboard
-          </div>
+            <div class="text-center button">
+                Copied to clipboard
+            </div>
         </v-snackbar>
-                    <v-footer dark padless>
-                        <v-card flat tile class="white--text text-center" color="#0A4770" >
+            <v-container>
+                <h3 class="text-h5 text-md-h4 text-xl-h3 pa-2 px-md-5 px-lg-0 px-xl-15 text-justify" style="color: #BEAF67">Elérhetőségünk</h3>
+            </v-container>
+                <!-- <v-container  fluid class="ma-auto pa-auto" pa-0 ma-0 style="width:100%"> -->
+
+                        <v-card flat tile class="white--text text-center ma-0 pa-0" color="#0A4770" >
                         <v-card-text>
                             <v-btn :x-large="$vuetify.breakpoint.lg || $vuetify.breakpoint.xl ? true : false" v-for="icon in icons" :key="icon" color="#F4E8D2" class="mx-4" icon>
                                 <v-icon> {{ icon }} </v-icon>
                             </v-btn>
                         </v-card-text>
-
-                        <v-divider></v-divider>
-
-                        <v-card-text class="body-2 text-xl-body-1 text-justify" style="color: #F4E8D2;">
-                            Duis commodo vitae velit et faucibus. Morbi vehicula lacinia malesuada. Nulla placerat augue vel ipsum ultrices, cursus iaculis dui sollicitudin. Vestibulum eu ipsum vel diam elementum tempor vel ut orci. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
-                        </v-card-text>
-
-                        <v-divider></v-divider>
                         <div class="d-flex justify-center">
                             <div class="my-3 font-weight-bold button d-flex justify-space-between custom-border" :style="$vuetify.breakpoint.lg || $vuetify.breakpoint.xl ? 'letter-spacing: 0.1em; padding: 5px' : 'letter-spacing: 0.1em;'">
                                 <div class="py-2 pl-2">{{ contact[0].meta }} </div>
@@ -38,6 +34,7 @@
                         
                         <v-card max-height="600">
                             <AddGoogleMap />
+
                         </v-card>
                         <div class="d-flex flex-column flex-md-row justify-space-around font-weight-bold body-2 mt-5 my-lg-10">
                             <div class="ma-3 px-0 d-md-flex spaced" :style="$vuetify.breakpoint.lg || $vuetify.breakpoint.xl ? 'letter-spacing: 0.1em;' : 'letter-spacing: 0;'">
@@ -85,7 +82,7 @@
                         </v-card-text>
                         </v-card>
                         
-                    </v-footer>
+                <!-- </v-container> -->
         </v-container>
 
 

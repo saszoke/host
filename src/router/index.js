@@ -10,7 +10,7 @@ Vue.use(VueRouter)
 
 const routes = [
   {
-    path: '/',
+    path: '/home',
     name: 'Home',
     component: Home
   },
@@ -53,10 +53,11 @@ const router = new VueRouter({
   base: process.env.BASE_URL,
   routes,
   scrollBehavior(to, from, savedPosition) {
-    // always scroll 10px above the element #main
-    console.log(to,from,savedPosition)
-    if (savedPosition) {
-      return savedPosition
+    try{
+      let myTarget ='#' + to.name.toLowerCase()
+      return { x: 0, y: document.querySelector(myTarget).offsetTop }    
+    } catch{
+      console.log(to,from,savedPosition)
     }
   }
 })

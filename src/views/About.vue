@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div ref="about">
     <AboutComponent :images="images"/>
   </div>
 </template>

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div ref="practices">
     <PracticesComponent :specialities="specialities"/>
   </div>
 </template>
@@ -55,8 +55,8 @@ export default {
           ]
         },
         { mainTheme: 'Védjegy ügyek',
-          affix: '(SZTNH és EUIPO előtt is)',
           subThemes: [
+            {title: 'SZTNH és EUIPO előtt is', body: 'Age discrimination in employment can affect virtually every worker at some point in their career.  It often occurs much earlier than most employees imagine.  In fact, most laws recognize age discrimination beginning at 40 years old.'},
             {title: 'A Magyarországi Szellemi Tulajdon Nemzeti Hivatala előtti eljárások', body: 'Age discrimination in employment can affect virtually every worker at some point in their career.  It often occurs much earlier than most employees imagine.  In fact, most laws recognize age discrimination beginning at 40 years old.'},
             {title: 'EUIPO - Európai Unió Szellemi Tulajdoni Hivatala előtti ügyintézések', body: 'Pregnancy discrimination in employment can have a substantial impact on women affecting their livelihood as well as their health.  There are federal, state, and local discrimination laws that protect women from adverse treatment.'},
           ]

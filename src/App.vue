@@ -1,38 +1,39 @@
 <template>
   <v-app>
     <v-main>
-      <v-container fluid class="ma-0 pa-0">
+      <v-container fluid class="ma-0 pa-0" id="home">
+        <!-- <div class="mainPic"></div> -->
+        <v-img :src="picRef" max-height="850" aspect-ratio="1.5" id="homeScrollTarget"></v-img>
 
-        <v-img :src="picRef" style="-webkit-filter: grayscale(80%); filter: grayscale(80%);" id="home"></v-img>
 
         <v-banner sticky color="#0A4770" elevation="4">
           <div class="d-flex flex-column flex-md-row justify-space-around">
 
-          <!-- FIRST CHILD BANNER -->
-          <div class="d-flex justify-space-between justify-sm-space-around mb-2 mb-md-0">
-            <div class="mr-5 mx-md-15 py-auto my-auto">
-              <v-app-bar-nav-icon  color="#F4E8D2" @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
-            </div>
-
-            <div class=" mx-md-15">
-              <div class="align-center order-lg-first text-h4 text-md-h3 text-xl-h2 font-weight-bold  my-auto"
-                  v-scroll-to="menus[0].goto" style="cursor: pointer; color: #F4E8D2;" v-text="title">
+            <!-- FIRST CHILD BANNER -->
+            <div class="d-flex justify-space-between justify-sm-space-around mb-2 mb-md-0">
+              <div class="mr-5 mx-md-15 py-auto my-auto order-md-0">
+                <v-app-bar-nav-icon  color="#F4E8D2" @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
               </div>
-              <div class="subtitle-1" style="cursor: pointer; color: #F4E8D2;" v-text="englishOn ? dynamicSubtitle[0] : dynamicSubtitle[1]"></div>
-            </div>
-            
 
-            <div class=" mx-md-15 py-auto my-auto">
-              <label class="switch">
-                <input type="checkbox"  @click="langSwitch">
-                <span class="slider round">
-                  <div class="switchText text-body-2 font-weight-bold">
-                  EN
-                  </div>
-                </span>
-              </label>
+              <div class=" mx-md-15 order-md-2">
+                <div class="align-center order-lg-first text-h4 text-md-h3 text-xl-h2 font-weight-bold  my-auto"
+                    v-scroll-to="menus[0].goto" style="cursor: pointer; color: #F4E8D2;" v-text="title">
+                </div>
+                <div class="subtitle-1" style="cursor: pointer; color: #F4E8D2;" v-text="englishOn ? dynamicSubtitle[0] : dynamicSubtitle[1]"></div>
+              </div>
+              
+
+              <div class=" mx-md-15 py-auto my-auto order-md-1">
+                <label class="switch">
+                  <input type="checkbox"  @click="langSwitch">
+                  <span class="slider round">
+                    <div class="switchText text-body-2 font-weight-bold">
+                    EN
+                    </div>
+                  </span>
+                </label>
+              </div>
             </div>
-          </div>
 
 
             <!-- SECOND CHILD BANNER -->
@@ -197,7 +198,7 @@ export default {
         englishOn: false,
         title: 'Földes',
         myString: "#contact",
-        picRef: "./lawyerGroup.jpg",
+        picRef: "./csapatSnip2.jpg",
         iconActive: false,
         styleObject: {
           position: 'fixed',
@@ -207,7 +208,7 @@ export default {
 
         },
         menus: [
-          {dynamicName: ['Home','Kezdőoldal'], id: 0, url: '/', goto: { el: '#home', offset: 0, onDone: this.doneScroll, duration: 1500 } },
+          {dynamicName: ['Home','Kezdőoldal'], id: 0, url: '/home', goto: { el: '#home', offset: 0, onDone: this.doneScroll, duration: 1500 } },
           {dynamicName: ['About','Rólunk'], id: 1, url: '/about', goto: { el: '#about', offset: 0, onDone: this.doneScroll, duration: 1500 }},
           {dynamicName: ['Practies','Szakterületeink'], id: 2, url: '/practices', goto: { el: '#practices', offset: 0, onDone: this.doneScroll, duration: 1500 }},
           {dynamicName: ['Lawyers','Ügyvédeink'], id: 3, url: '/associates', goto: { el: '#associates', offset: 0, onDone: this.doneScroll, duration: 1500 }},
@@ -229,8 +230,8 @@ export default {
     doneScroll(elem){
       // console.log(top)
       try{
-        // this.$router.push(`/${elem.id}`);
-        console.log('skipping router push',elem)
+        this.$router.push(`/${elem.id}`);
+        // console.log('skipping router push',elem)
       } catch(err){
         console.log('Rerouting avoided. Already on route.')
       }

@@ -1,5 +1,5 @@
 <template>
-  <div>  
+  <div ref="contact">  
     <ContactComponent :contact="contactMethods" :address="address" :copyIcon="copyIcon" @childAlert="$emit('childAlert',$event)" @childCall="$emit('childCall', 'tel:+52554442')"/>
   </div>
 
