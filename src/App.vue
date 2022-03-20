@@ -297,6 +297,26 @@ html {
   height: -webkit-fill-available;
 }
 
+// @font-face {
+//   font-family: "RobotoSlab";
+//   src: local("RobotoSlab"),
+//   url(./fonts/RobotoSlab/RobotoSlab-VariableFont_wght.ttf) format("truetype");
+// }
+// @font-face {
+//   font-family: "Roboto";
+//   src: local("Roboto"),
+//   url(./fonts/RobotoSlab/static/Roboto-Regular.ttf) format("truetype");
+// }
+// @font-face {
+//   font-family: "Galliard-Std-Roman";
+//   src: local("Galliard-Std-Roman"),
+//   url(./fonts/Galliard-Std-Roman/ITC-Galliard-Std-Roman_24635.ttf) format("truetype");
+// }
+// @font-face {
+//   font-family: "Times";
+//   src: local("Times"),
+//   url(./fonts/Times/TIMESR.ttf) format("truetype");
+// }
 
 #app {
   -webkit-font-smoothing: antialiased;
