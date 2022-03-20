@@ -3,42 +3,24 @@
     <div class="parallaxxx pic3"></div>
     <v-container>
 
-    <h3 class="text-h5 text-md-h4 text-xl-h3 pa-2 px-md-5 px-lg-0 px-xl-15 text-justify" style="color: #BEAF67">Szakterületeink</h3>
-    </v-container>
-      <v-container fluid ma-0 pa-0>
-        <v-row no-gutters class="d-flex flex-column-reverse justify-space-between flex-md-row flex-md-space-between">
-          <v-col cols="12" md="6" >
-            <v-row no-gutters class="d-flex flex-column-reverse justify-space-between flex-md-row flex-md-space-between">
-            
-              <v-col cols="12" md="4" class="">
-              </v-col>
-              <v-col cols="12" md="8">
-                <div class="d-flex flex-column justify-md-space-around" v-for="speciality in specialities" :key="speciality.mainTheme" height="100%">
-                  <div class="align-self-start ma-5 subtitle-2 font-weight-bold button mx-lg-15 mainTitle">
-                    {{ speciality.mainTheme}}
-                  </div>
-                  <div class="d-flex flex-column justify-space-around" v-for="subSpec in speciality.subThemes" :key="subSpec.title">
-                      <!-- <div class="button font-weight-bold button text-justify mx-10  mx-lg-15 px-lg-5" style="color:#0A4770;"> {{ subSpec.title}}</div> -->
-                      <div class="body-2 text-lg-body-1 text-justify align-self-start mx-15  px-lg-10 py-5" style="color:#0A4770;"> {{ subSpec.title}}</div>
-                  </div>
-                </div>
-              </v-col>
-            </v-row>
+    <h3 class="text-h5 text-md-h4 text-xl-h3 pa-md-2 px-md-5 px-lg-0 px-xl-15 text-justify" style="color: #BEAF67">Szakterületeink</h3>
 
+    <div class="d-flex justify-space-around flex-wrap">
+      <div
+        v-for="speciality in specialities" :key="speciality.mainTheme"
+        class="my-5 ma-md-10 practiceContainer pa-5"
+  
+        :style="$vuetify.breakpoint.md || $vuetify.breakpoint.lg || $vuetify.breakpoint.xl ? 'width: 300px; height: 675px;' : 'width: 300px; height: auto;'"
+        >
+        <div class="text-start subtitle-1 font-weight-bold button mainTitle" v-text="speciality.mainTheme"></div>
 
-          </v-col>
-          <v-col cols="12" md="6" >
-                <v-row no-gutters>
-                  <v-col cols="12">
-                    <div :class="$vuetify.breakpoint.md || $vuetify.breakpoint.lg || $vuetify.breakpoint.xl ? 'econtainer' : 'minified'">
-                      <v-img :height="$vuetify.breakpoint.md || $vuetify.breakpoint.lg || $vuetify.breakpoint.xl ? '100vh':'25vh'" src="wallpaperSnip.jpg" :class="$vuetify.breakpoint.md || $vuetify.breakpoint.lg || $vuetify.breakpoint.xl ? 'element' : ''"> </v-img>
-                    </div>
-                  </v-col>
-                  </v-row>
+        <div class="body-2 text-lg-body-2 mt-2 text-justify px-3 subTitle" v-for="subtitle in speciality.subThemes" :key="subtitle.title" v-text="subtitle.title"></div>
 
-          </v-col>
-        </v-row>
+      </div>
+
+    </div>
       </v-container>
+
   </v-container>
 </template>
 
@@ -82,7 +64,7 @@
 .econtainer {
   display: flex;
   align-items: flex-start;
-  height: 2250px;
+  /* height: 2250px; */
   /* margin-bottom: 1000px; */
 }
 
@@ -96,6 +78,17 @@
 }
 
 .mainTitle{
-  color:#0A4770; padding-bottom: 1%; border-bottom: 2px solid #BEAF67; text-transform: uppercase;
+  text-transform: uppercase;
+  color: #0A4770;
+}
+.subTitle{
+  color: #0A4770;
+
+}
+
+.practiceContainer{
+  background-color: #fffbf5;
+  border-radius: 15px;
+  border: 2px solid #BEAF67;
 }
 </style>

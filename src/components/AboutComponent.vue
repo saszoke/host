@@ -4,7 +4,7 @@
     <!-- <div class="parallaxxx pic3"></div> -->
 
     <v-container>
-    <h3 class="text-h5 text-md-h4 text-xl-h3 pa-2 px-md-0 px-xl-15 text-justify" style="color: #BEAF67">Rólunk</h3>
+    <h3 class="text-h5 text-md-h4 text-xl-h3 pa-md-2 px-md-0 px-xl-15 text-justify" style="color: #BEAF67">Rólunk</h3>
       <!-- <v-img
         style="-webkit-filter: grayscale(80%); filter: grayscale(80%);"
         :src="images.building"

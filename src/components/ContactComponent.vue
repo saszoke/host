@@ -8,7 +8,7 @@
             </div>
         </v-snackbar>
             <v-container>
-                <h3 class="text-h5 text-md-h4 text-xl-h3 pa-2 px-md-5 px-lg-0 px-xl-15 text-justify" style="color: #BEAF67">Elérhetőségünk</h3>
+                <h3 class="text-h5 text-md-h4 text-xl-h3 pa-md-2 px-md-5 px-lg-0 px-xl-15 text-justify" style="color: #BEAF67">Elérhetőségünk</h3>
             </v-container>
                 <!-- <v-container  fluid class="ma-auto pa-auto" pa-0 ma-0 style="width:100%"> -->
 
@@ -18,19 +18,7 @@
                                 <v-icon> {{ icon }} </v-icon>
                             </v-btn>
                         </v-card-text>
-                        <div class="d-flex justify-center">
-                            <div class="my-3 font-weight-bold button d-flex justify-space-between custom-border" :style="$vuetify.breakpoint.lg || $vuetify.breakpoint.xl ? 'letter-spacing: 0.1em; padding: 5px' : 'letter-spacing: 0.1em;'">
-                                <div class="py-2 pl-2">{{ contact[0].meta }} </div>
-                                <div class="">
-                                    <v-btn icon color="#BEAF67" @click="$emit('childCall', 'tel:+52554442')">
-                                        <v-icon> {{ "mdi-" + contact[0].icon }} </v-icon>
-                                    </v-btn>
-                                    <v-btn icon color="#BEAF67" @click="$emit('childAlert', 'phone')">
-                                        <v-icon class="copy">{{copyIcon}}</v-icon>
-                                    </v-btn>
-                                </div>
-                            </div>
-                        </div>
+
                         
                         <v-card max-height="600">
                             <AddGoogleMap />
@@ -48,16 +36,18 @@
                                     </v-btn>
                                 </div>
                             </div>
-                            <div class="ma-3 px-0 d-none d-md-flex spaced" :style="$vuetify.breakpoint.lg || $vuetify.breakpoint.xl ? 'letter-spacing: 0.1em;' : 'letter-spacing: 0;'">
-                                <div class="py-2 mx-0" style="color: #F4E8D2">{{ contact[0].meta }} </div>
-                                <div>
-                                    <v-btn icon  style="color: #F4E8D2" @click="$emit('childCall', 'tel:+52554442')">
+                            <div class="d-flex justify-center">
+                            <div class="my-3 font-weight-bold button d-flex justify-space-between custom-border" :style="$vuetify.breakpoint.lg || $vuetify.breakpoint.xl ? 'letter-spacing: 0.1em; padding: 5px' : 'letter-spacing: 0.1em;'">
+                                <div class="py-2 pl-2">{{ contact[0].meta }} </div>
+                                <div class="">
+                                    <v-btn icon color="#BEAF67" @click="$emit('childCall', 'tel:+52554442')">
                                         <v-icon> {{ "mdi-" + contact[0].icon }} </v-icon>
                                     </v-btn>
-                                    <v-btn icon  style="color: #F4E8D2" @click="$emit('childAlert', 'phone')">
-                                        <v-icon  class="copy">{{copyIcon}}</v-icon>
+                                    <v-btn icon color="#BEAF67" @click="$emit('childAlert', 'phone')">
+                                        <v-icon class="copy">{{copyIcon}}</v-icon>
                                     </v-btn>
                                 </div>
+                            </div>
                             </div>
                             <div class="ma-3 px-0 d-md-flex spaced" :style="$vuetify.breakpoint.lg || $vuetify.breakpoint.xl ? 'letter-spacing: 0.1em;' : 'letter-spacing: 0;'"  style="color: #F4E8D2">
                                 <div class="py-2 mx-0">{{ contact[1].meta }} </div>
@@ -101,9 +91,7 @@ import AddGoogleMap from "@/components/AddGoogleMap";
             snackbar : false,
             icons: [
                 'mdi-facebook',
-                'mdi-twitter',
                 'mdi-linkedin',
-                'mdi-instagram',
             ],
             mail: 'mdi-email'
         }),
