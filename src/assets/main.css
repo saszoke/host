@@ -21,7 +21,7 @@
 @font-face {
     font-family: "Galliard-Std-Roman";
     src: local("Galliard-Std-Roman"),
-    url("/fonts/Galliard-Std-Roman/ITC-Galliard-Std-Roman_24635.ttf") format("truetype");
+    url("/fonts/Galliard-Std-Roman/Galliard-Std-Roman.woff2") format("woff2");
 }
 
 @font-face {
