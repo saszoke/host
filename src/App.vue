@@ -15,7 +15,7 @@
                 <v-app-bar-nav-icon  color="#F4E8D2" @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
               </div>
 
-              <div class=" mx-md-15 order-md-2">
+              <div class=" mx-md-15 order-md-2" style="font-family: Galliard-Std-Roman">
                 <div class="align-center order-lg-first text-h4 text-md-h3 text-xl-h2 font-weight-bold  my-auto"
                     v-scroll-to="menus[0].goto" style="cursor: pointer; color: #F4E8D2;" v-text="title">
                 </div>
