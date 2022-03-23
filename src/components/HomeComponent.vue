@@ -10,7 +10,7 @@
           </div>
         </v-col>
         <v-col cols="12" md="6" class="mx-0 px-0 pl-md-5">
-          <h3 class="text-h6 text-md-h4 text-xl-h3 pa-md-2 px-md-0 px-xl-15 text-justify" style="color: #BEAF67">Jogi képviselet, több mint 25 év tapasztalattal</h3>
+          <h3 class="text-h6 text-md-h4 text-xl-h3 pa-md-2 px-md-0 px-xl-15 text-justify" style="color: #BEAF67">Jogi képviselet, több mint 25 év tapasztalattal!!!</h3>
           <!-- <div class="text-h6 text-md-h5 text-xl-h4 pa-2" style="color: #F4E8D2;">Jogi képviselet, több mint 25 év tapasztalattal</div> -->
         </v-col>
       </v-row>
