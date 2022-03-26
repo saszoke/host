@@ -3,7 +3,7 @@
     <!-- <div class="parallax pic2"></div> -->
     <!-- <div class="parallaxxx pic3"></div> -->
 
-    <v-container>
+    <v-container :class="$vuetify.breakpoint.height < 799 && $vuetify.breakpoint.width < 1370 && $vuetify.breakpoint.width > 1100 ? 'px-15' : 'px-auto'">
     <h3 class="text-h5 text-md-h4 text-xl-h3 pa-md-2 px-md-0 px-xl-15 text-justify" style="color: #BEAF67">Rólunk</h3>
       <!-- <v-img
         style="-webkit-filter: grayscale(80%); filter: grayscale(80%);"
@@ -14,7 +14,7 @@
       
       <v-row class="ma-0 pa-0">
           <v-col cols="12" md="12" class="ma-0 pa-0" >
-            <v-img contain src="csapatSnip3.jpg"> </v-img>
+            <v-img src="random1Snip.jpg" :max-height="$vuetify.breakpoint.height < 799 && $vuetify.breakpoint.width < 1370 ? 350 : 500"> </v-img>
           </v-col>
           <v-col cols="12" md="12" class="ma-0 pa-0" >
             <div class="body-2 text-lg-body-1 my-3 text-justify" style="color: #0A4770;">Ügyvédi irodánk 26 éve Debrecenben működő immár két generációs vállalkozás. Ügyfeleink nemcsak Debrecenből és környékéről, hanem szinte az ország egész területéről keresnek bennünket az ügyeik vitele és azok megoldása érdekében. 
@@ -37,12 +37,7 @@
     name: 'About',
     props: ['images'],
 
-    data: () => ({
-      image: "http://1.bp.blogspot.com/-8PfnHfgrH4I/TylX2v8pTMI/AAAAAAAAJJ4/TICBoSEI57o/s1600/search_by_image_image.png",
-      cssProps: {
-          backgroundImage: `url(${require('@/assets/officeInside.jpg')})`
-        }
-    }),
+    data: () => ({}),
     // methods: {
 
 

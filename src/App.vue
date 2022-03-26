@@ -2,11 +2,17 @@
   <v-app>
     <v-main>
       <v-container fluid class="ma-0 pa-0" id="home">
-        <!-- <div class="mainPic"></div> -->
-        <v-img :src="picRef" max-height="850" aspect-ratio="1.5" id="homeScrollTarget"></v-img>
+        <v-carousel hide-delimiter-background :height="dynamicCarouselHeight()" :show-arrows="false" id="homeScrollTarget">
+          <v-carousel-item
+            v-for="(item,i) in items"
+            :key="i"
+            :src="item.src"
+          ></v-carousel-item>
+        </v-carousel>
+        <!-- <v-img :src="picRef" max-height="850" aspect-ratio="1.5" id="homeScrollTarget"></v-img> -->
 
 
-        <v-banner sticky color="#0A4770" elevation="4">
+        <v-banner sticky color="#0A4770" elevation="4" style="padding:0;">
           <div class="d-flex flex-column flex-md-row justify-space-around">
 
             <!-- FIRST CHILD BANNER -->
@@ -23,7 +29,7 @@
               </div>
               
 
-              <div class=" mx-md-15 py-auto my-auto order-md-1">
+              <div class=" mx-md-15 py-auto my-auto order-md-1 d-md-none">
                 <label class="switch">
                   <input type="checkbox"  @click="langSwitch">
                   <span class="slider round">
@@ -37,20 +43,20 @@
 
 
             <!-- SECOND CHILD BANNER -->
-            <div class="order-lg-last d-flex justify-center justify-lg-space-between mt-md-0 mx-md-10">
+            <div class="order-lg-last d-flex justify-center justify-lg-space-between mt-md-0 mx-md-10 mb-5 mb-md-0">
 
-                <div class="d-flex justify-space-between mr-3 mr-md-10 mr-lg-15 px-0 my-auto button font-weight-bold custom-border fixedNavButtonWidth" :style="$vuetify.breakpoint.lg || $vuetify.breakpoint.xl ? 'width: auto; letter-spacing: 0.1em; padding: 5px;' : 'width: 140px;'">
-                  <div class="py-2 pl-2" style="color: #BEAF67;" v-text="$vuetify.breakpoint.lg || $vuetify.breakpoint.xl ? '+52 554 442' : 'PHONE'"></div>
+              <div class="d-flex justify-space-between mr-3 mr-md-10 mr-lg-15 px-0 my-auto button font-weight-bold custom-border fixedNavButtonWidth" :style="$vuetify.breakpoint.lg || $vuetify.breakpoint.xl ? 'width: auto; letter-spacing: 0.1em; padding: 5px;' : 'width: 140px;'">
+                <div class="py-2 pl-2" style="color: #BEAF67;" v-text="$vuetify.breakpoint.lg || $vuetify.breakpoint.xl ? '+52 554 442' : 'PHONE'"></div>
 
-                  <div class="ma-0 pa-0">
-                      <v-btn icon color="#BEAF67" class="mr-0" @click="handleCall('tel:+52554442')">
-                          <v-icon> mdi-phone-outline </v-icon>
-                      </v-btn>
-                      <v-btn icon color="#BEAF67" class="mr-0" @click="flashAlert('phone')">
-                          <v-icon class="copy">{{copyIcon}}</v-icon>
-                      </v-btn>
-                  </div>
+                <div class="ma-0 pa-0">
+                    <v-btn icon color="#BEAF67" class="mr-0" @click="handleCall('tel:+52554442')">
+                        <v-icon> mdi-phone-outline </v-icon>
+                    </v-btn>
+                    <v-btn icon color="#BEAF67" class="mr-0" @click="flashAlert('phone')">
+                        <v-icon class="copy">{{copyIcon}}</v-icon>
+                    </v-btn>
                 </div>
+              </div>
 
               <div class="d-flex justify-space-between mx-0 px-0 my-auto button font-weight-bold custom-border fixedNavButtonWidth" :style="$vuetify.breakpoint.lg || $vuetify.breakpoint.xl ? 'width: auto; letter-spacing: 0.1em; padding: 5px;' : 'width: 140px;'">
                 <div class="py-2 pl-2" style="color: #BEAF67;" v-text="$vuetify.breakpoint.lg || $vuetify.breakpoint.xl ? 'foldespeter@foldeslegal.hu' : 'EMAIL'"></div>
@@ -63,6 +69,17 @@
                         <v-icon class="copy">{{copyIcon}}</v-icon>
                     </v-btn>
                 </div>
+              </div>
+
+              <div class=" mx-md-15 py-auto my-auto order-md-1 d-none d-md-flex">
+                <label class="switch">
+                  <input type="checkbox"  @click="langSwitch">
+                  <span class="slider round">
+                    <div class="switchText text-body-2 font-weight-bold">
+                    EN
+                    </div>
+                  </span>
+                </label>
               </div>
 
             </div>
@@ -211,12 +228,26 @@ export default {
           {dynamicName: ['Home','Kezdőoldal'], id: 0, url: '/home', goto: { el: '#home', offset: 0, onDone: this.doneScroll, duration: 1500 } },
           {dynamicName: ['About','Rólunk'], id: 1, url: '/about', goto: { el: '#about', offset: 0, onDone: this.doneScroll, duration: 1500 }},
           {dynamicName: ['Practies','Szakterületeink'], id: 2, url: '/practices', goto: { el: '#practices', offset: 0, onDone: this.doneScroll, duration: 1500 }},
-          {dynamicName: ['Lawyers','Ügyvédeink'], id: 3, url: '/associates', goto: { el: '#associates', offset: 0, onDone: this.doneScroll, duration: 1500 }},
+          {dynamicName: ['Lawyers','Munkatársaink'], id: 3, url: '/associates', goto: { el: '#associates', offset: 0, onDone: this.doneScroll, duration: 1500 }},
           {dynamicName: ['Contact','Kapcsolat'], id: 4, url: '/contact', goto: { el: '#contact', offset: 0, onDone: this.doneScroll, duration: 1500 }}
           ],
         drawer: false,
         group: null,
-        menuTranslations: ['Home','About','Practices','Associates','Contact']
+        menuTranslations: ['Home','About','Practices','Associates','Contact'],
+        items: [
+          {
+            src: './csapatSnip2.jpg',
+          },
+          {
+            src: './csapatSnip3.jpg',
+          },
+          {
+            src: './random1Snip.jpg',
+          },
+          {
+            src: './random2Snip.jpg',
+          },
+        ],
       }
     },
 
@@ -227,6 +258,28 @@ export default {
   },
 
   methods: {
+    dynamicCarouselHeight(){
+      var dHeight = "0"
+      switch (this.$vuetify.breakpoint.name) {
+        case "xs":
+          dHeight = 200;
+          break;
+        case "sm":
+          dHeight = 400;
+          break;
+        case "md":
+          dHeight = 600;
+          break;
+        case "lg":
+          dHeight = 600;
+          break;
+        case "xl":
+          dHeight = 850;
+          break;
+      }
+
+      return dHeight
+    },
     doneScroll(elem){
       // console.log(top)
       try{
@@ -282,7 +335,6 @@ export default {
 
   beforeDestroy() {
     document.removeEventListener('scroll', this.handleDebouncedScroll);
-
   }
 }
 </script>
@@ -425,4 +477,9 @@ input:checked + .slider:before {
   height: 100%;
   color:#115874;
 }
+
+.contained{
+  object-fit: contain;
+}
+
 </style>

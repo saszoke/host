@@ -2,7 +2,7 @@
   <v-container fluid ma-0 pa-0 style="width: 100%;">
       <div class="parallaxxx pic3"></div>
 
-    <v-container>
+    <v-container :class="$vuetify.breakpoint.height < 799 && $vuetify.breakpoint.width < 1370  && $vuetify.breakpoint.width > 1100 ? 'px-15' : 'px-auto'">
       <v-row>
         <v-col cols="12" md="6" class="mx-0 px-0 pr-md-5">
           <div class="body-2 text-lg-body-1 text-justify mx-md-0 my-3" style="color: #0A4770;">
@@ -10,7 +10,7 @@
           </div>
         </v-col>
         <v-col cols="12" md="6" class="mx-0 px-0 pl-md-5">
-          <h3 class="text-h6 text-md-h4 text-xl-h3 pa-md-2 px-md-0 px-xl-15 text-justify" style="color: #BEAF67">Jogi képviselet, több mint 25 év tapasztalattal!!!</h3>
+          <h3 class="text-h6 text-md-h4 text-xl-h3 pa-md-2 px-md-0 px-xl-15 text-left" style="color: #BEAF67">Jogi képviselet, több mint 25 év tapasztalattal</h3>
           <!-- <div class="text-h6 text-md-h5 text-xl-h4 pa-2" style="color: #F4E8D2;">Jogi képviselet, több mint 25 év tapasztalattal</div> -->
         </v-col>
       </v-row>

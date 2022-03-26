@@ -7,12 +7,12 @@
                 Copied to clipboard
             </div>
         </v-snackbar>
-            <v-container>
+            <v-container :class="$vuetify.breakpoint.height < 799 && $vuetify.breakpoint.width < 1370 && $vuetify.breakpoint.width > 1100 ? 'px-15' : 'px-auto'">
                 <h3 class="text-h5 text-md-h4 text-xl-h3 pa-md-2 px-md-5 px-lg-0 px-xl-15 text-justify" style="color: #BEAF67">Elérhetőségünk</h3>
             </v-container>
                 <!-- <v-container  fluid class="ma-auto pa-auto" pa-0 ma-0 style="width:100%"> -->
 
-                        <v-card flat tile class="white--text text-center ma-0 pa-0" color="#0A4770" >
+                        <v-card flat tile class="white--text text-center ma-0 pa-0" color="#0A4770" :class="$vuetify.breakpoint.height < 799 && $vuetify.breakpoint.width < 1370 && $vuetify.breakpoint.width > 1100 ? 'px-15' : 'px-auto'">
                         <v-card-text>
                             <v-btn :x-large="$vuetify.breakpoint.lg || $vuetify.breakpoint.xl ? true : false" v-for="icon in icons" :key="icon" color="#F4E8D2" class="mx-4" icon>
                                 <v-icon> {{ icon }} </v-icon>
@@ -21,7 +21,7 @@
 
                         
                         <v-card max-height="600">
-                            <AddGoogleMap />
+                            <!-- <AddGoogleMap /> -->
 
                         </v-card>
                         <div class="d-flex flex-column flex-md-row justify-space-around font-weight-bold body-2 mt-5 my-lg-10">
@@ -79,12 +79,12 @@
 </template>
 
 <script>
-import AddGoogleMap from "@/components/AddGoogleMap";
+// import AddGoogleMap from "@/components/AddGoogleMap";
 
     export default {
         name: 'Contact',
         props: ['contact', 'address', 'copyIcon'],
-        components: { AddGoogleMap },
+        // components: { AddGoogleMap },
 
         data: () => ({
             timeout: 1500,

@@ -1,6 +1,6 @@
 <template>
   <div ref="about">
-    <AboutComponent :images="images"/>
+    <AboutComponent/>
   </div>
 </template>
 
@@ -14,12 +14,6 @@ export default {
     AboutComponent
   },
 
-  data: ()=>{
-    return {
-      images: {
-        building: "./building.jpg"
-      }
-    }
-  }
+  data: ()=>{}
 }
 </script>
