@@ -271,7 +271,7 @@ export default {
           dHeight = 600;
           break;
         case "lg":
-          dHeight = 600;
+          dHeight = 680;
           break;
         case "xl":
           dHeight = 850;

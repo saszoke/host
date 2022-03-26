@@ -18,13 +18,16 @@
                                 <v-icon> {{ icon }} </v-icon>
                             </v-btn>
                         </v-card-text>
-
-                        
-                        <v-card max-height="600">
-                            <!-- <AddGoogleMap /> -->
-
                         </v-card>
-                        <div class="d-flex flex-column flex-md-row justify-space-around font-weight-bold body-2 mt-5 my-lg-10">
+                        <v-container fluid ma-0 pa-0>
+                            <v-card max-height="600">
+                                <AddGoogleMap />
+
+                            </v-card>
+
+                        </v-container>
+                        <v-card flat tile class="white--text text-center ma-0 pa-0" color="#0A4770" :class="$vuetify.breakpoint.height < 799 && $vuetify.breakpoint.width < 1370 && $vuetify.breakpoint.width > 1100 ? 'px-15' : 'px-auto'">
+                        <div class="d-flex flex-column flex-md-row justify-space-around font-weight-bold body-2 pt-5 mb-lg-10">
                             <div class="ma-3 px-0 d-md-flex spaced" :style="$vuetify.breakpoint.lg || $vuetify.breakpoint.xl ? 'letter-spacing: 0.1em;' : 'letter-spacing: 0;'">
                                 <div class="py-2 mx-0"  style="color: #F4E8D2">{{ contact[2].meta }} </div>
                                 <div>
@@ -79,12 +82,12 @@
 </template>
 
 <script>
-// import AddGoogleMap from "@/components/AddGoogleMap";
+import AddGoogleMap from "@/components/AddGoogleMap";
 
     export default {
         name: 'Contact',
         props: ['contact', 'address', 'copyIcon'],
-        // components: { AddGoogleMap },
+        components: { AddGoogleMap },
 
         data: () => ({
             timeout: 1500,
