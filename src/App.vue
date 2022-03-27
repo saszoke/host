@@ -277,6 +277,13 @@ export default {
           dHeight = 850;
           break;
       }
+      console.log('<<<<<<   You can ignore this, this is for development purposes only. >>>>>>')
+      console.log(`<<<<<<   Viewport width:  ${this.$vuetify.breakpoint.width} >>>>>>`)
+      console.log(`<<<<<<   Viewport height:  ${this.$vuetify.breakpoint.height} >>>>>>`)
+      console.log('<<<<<<   You can ignore this, this is for development purposes only. >>>>>>')
+      if(this.$vuetify.breakpoint.name == "lg" && this.$vuetify.breakpoint.height > 950 && this.$vuetify.breakpoint.width > 1800){
+        dHeight = 850;
+      }
 
       return dHeight
     },
