@@ -2,7 +2,7 @@
   <v-container fluid ma-0 pa-0 style="width: 100%;">
       <div class="parallaxxx pic3"></div>
 
-    <v-container :class="$vuetify.breakpoint.height < 799 && $vuetify.breakpoint.width < 1370  && $vuetify.breakpoint.width > 1100 ? 'px-15' : 'px-auto'">
+    <v-container class="px-md-5" :style="`max-width: ${dynamicWidth}px`">
       <v-row>
         <v-col cols="12" md="6" class="mx-0 px-0 pr-md-5">
           <div class="body-2 text-lg-body-1 text-justify mx-md-0 my-3" style="color: #0A4770;">
@@ -29,10 +29,12 @@
 
   export default {
     name: 'Home',
-    props: ['picRef'],
+    props: ['picRef', 'dynamicWidth'],
 
     data: () => ({}),
-    
+    mounted(){
+      console.log(this.dynamicWidth)
+    }
   }
 </script>
 

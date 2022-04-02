@@ -1,6 +1,6 @@
 <template>
   <div class="home" ref="home">
-    <HomeComponent picRef="./lawyerGroup.jpg"/>
+    <HomeComponent :dynamicWidth="dynamicWidth" picRef="./lawyerGroup.jpg"/>
   </div>
 </template>
 
@@ -10,6 +10,7 @@ import HomeComponent from '@/components/HomeComponent.vue'
 
 export default {
   name: 'Home',
+  props: ['dynamicWidth'],
   components: {
     HomeComponent
   }

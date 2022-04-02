@@ -1,6 +1,6 @@
 <template>
   <div ref="contact">  
-    <ContactComponent :contact="contactMethods" :address="address" :copyIcon="copyIcon" @childAlert="$emit('childAlert',$event)" @childCall="$emit('childCall', 'tel:+52554442')"/>
+    <ContactComponent :dynamicWidth="dynamicWidth" :contact="contactMethods" :address="address" :copyIcon="copyIcon" @childAlert="$emit('childAlert',$event)" @childCall="$emit('childCall', 'tel:+52554442')"/>
   </div>
 
 </template>
@@ -14,7 +14,7 @@ export default {
   components: {
     ContactComponent
   },
-  props: ['copyIcon'],
+  props: ['copyIcon', 'dynamicWidth'],
 
   data: ()=>{
     return {

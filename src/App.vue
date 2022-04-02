@@ -2,14 +2,13 @@
   <v-app>
     <v-main>
       <v-container fluid class="ma-0 pa-0" id="home">
-        <v-carousel hide-delimiter-background :height="dynamicCarouselHeight()" :show-arrows="false" id="homeScrollTarget">
+        <v-carousel cycle hide-delimiters :height="dynamicCarouselHeight()" :show-arrows="false" id="homeScrollTarget">
           <v-carousel-item
             v-for="(item,i) in items"
             :key="i"
             :src="item.src"
           ></v-carousel-item>
         </v-carousel>
-        <!-- <v-img :src="picRef" max-height="850" aspect-ratio="1.5" id="homeScrollTarget"></v-img> -->
 
 
         <v-banner sticky color="#0A4770" elevation="4" style="padding:0;">
@@ -21,11 +20,11 @@
                 <v-app-bar-nav-icon  color="#F4E8D2" @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
               </div>
 
-              <div class=" mx-md-15 order-md-2" style="font-family: Galliard-Std-Roman">
-                <div class="align-center order-lg-first text-h4 text-md-h3 text-xl-h2 font-weight-bold  my-auto"
+              <div class=" mx-md-15 order-md-2 py-1" style="font-family: Galliard-Std-Roman">
+                <div class="align-center order-lg-first text-h5 text-md-h4 text-xl-h3 font-weight-bold  my-auto"
                     v-scroll-to="menus[0].goto" style="cursor: pointer; color: #F4E8D2;" v-text="title">
                 </div>
-                <div class="subtitle-1" style="cursor: pointer; color: #F4E8D2;" v-text="englishOn ? dynamicSubtitle[0] : dynamicSubtitle[1]"></div>
+                <div class="subtitle-2" style="cursor: pointer; color: #F4E8D2;" v-text="englishOn ? dynamicSubtitle[0] : dynamicSubtitle[1]"></div>
               </div>
               
 
@@ -43,7 +42,7 @@
 
 
             <!-- SECOND CHILD BANNER -->
-            <div class="order-lg-last d-flex justify-center justify-lg-space-between mt-md-0 mx-md-10 mb-5 mb-md-0">
+            <div class="order-lg-last d-flex justify-center justify-lg-space-between mt-md-0 mx-md-10 mb-md-0">
 
               <div class="d-flex justify-space-between mr-3 mr-md-10 mr-lg-15 px-0 my-auto button font-weight-bold custom-border fixedNavButtonWidth" :style="$vuetify.breakpoint.lg || $vuetify.breakpoint.xl ? 'width: auto; letter-spacing: 0.1em; padding: 5px;' : 'width: 140px;'">
                 <div class="py-2 pl-2" style="color: #BEAF67;" v-text="$vuetify.breakpoint.lg || $vuetify.breakpoint.xl ? '+52 554 442' : 'PHONE'"></div>
@@ -171,11 +170,11 @@
 
 
         <div>
-          <Home />
-          <About />
-          <Practices />
-          <Associates />
-          <Contact :copyIcon="copyIcon" @childAlert="flashAlert($event)" @childCall="handleCall('tel:+52554442')"/>
+          <Home :dynamicWidth="dynamicWidth" />
+          <About :dynamicWidth="dynamicWidth" />
+          <Practices :dynamicWidth="dynamicWidth" />
+          <Associates :dynamicWidth="dynamicWidth" />
+          <Contact :dynamicWidth="dynamicWidth" :copyIcon="copyIcon" @childAlert="flashAlert($event)" @childCall="handleCall('tel:+52554442')"/>
 
         </div>
       </v-container>
@@ -239,7 +238,7 @@ export default {
             src: './csapatSnip2.jpg',
           },
           {
-            src: './csapatSnip3.jpg',
+            src: './random3Snip.jpg',
           },
           {
             src: './random1Snip.jpg',
@@ -247,7 +246,15 @@ export default {
           {
             src: './random2Snip.jpg',
           },
+          {
+            src: './random4Snip.jpg',
+          },
         ],
+      }
+    },
+    computed:{
+      dynamicWidth(){
+        return 1000
       }
     },
 
@@ -258,6 +265,7 @@ export default {
   },
 
   methods: {
+    randomFunc(){ console.log('randomfunc working')},
     dynamicCarouselHeight(){
       var dHeight = "0"
       switch (this.$vuetify.breakpoint.name) {
@@ -298,14 +306,16 @@ export default {
     },
     handleScroll() {
       this.isUserScrolling = (document.scrollY > 0);
-      // console.log('calling handleScroll', window);
-      // console.log(window.visualViewport.height / window.visualViewport.pageTop)
+      console.log('handling scroll...............', window);
+      // this.$router.push('/contact')  <----- ez így nem lesz jó... 
+      // this.$router.replace({path: '/contact'})
     },
 
     handleCall(number){
       window.open(number)
     },
     flashAlert(content){
+      console.log(this.$route)
       if (content == 'mail'){
         this.dynamicSnackText = this.englishOn ? "EMAIL ADDRESS COPIED TO CLIPBOARD" : "EMAIL CÍM VÁGÓLAPRA MÁSOLVA"
         navigator.clipboard.writeText('foldespeter@foldeslegal.hu')
@@ -334,10 +344,32 @@ export default {
       this.englishOn = !this.englishOn
     }
   },
-  created() {
+  mounted() {
+    console.log('wtf?: ', this.kutyafasza)
     this.handleDebouncedScroll = debounce(this.handleScroll, 100);
     document.addEventListener('scroll', this.handleDebouncedScroll);
     document.addEventListener('wheel', this.handleDebouncedScroll);
+
+    setTimeout(() => {
+      var scrollTarget = null
+      try{
+        scrollTarget = '#' + this.$route.name.toLowerCase();
+        console.log('Initiating scroll to ', scrollTarget);
+        this.$vuetify.goTo(scrollTarget, {
+              duration: 2500,
+              offset: 0,
+              easing: 'easeInOutCubic'
+            })
+      } catch(err){
+        // FOR DEVELOPMENT DEBUGGING
+        // console.log('Failed to scroll to ', scrollTarget)
+        // console.log(err)
+      }
+    }, 1500);
+
+  },
+  updated(){
+    console.log(this.$route)
   },
 
   beforeDestroy() {
@@ -487,6 +519,21 @@ input:checked + .slider:before {
 
 .contained{
   object-fit: contain;
+}
+
+.bottomLine1{
+  padding-bottom: .5%;
+  border-bottom: 1px solid #115874;
+}
+
+.bottomLine5{
+  padding-bottom: .5%;
+  border-bottom: 5px solid #115874;
+}
+
+.bottomLine2{
+  padding-bottom: .5%;
+  border-bottom: 2px solid #115874;
 }
 
 </style>

@@ -1,31 +1,64 @@
 <template>
   <div ref="associates">
-    <AssociatesComponent :lawyers="lawyersList" :lawyers2="lawyersList2"/>
+    <v-container fluid ma-0 pa-0 @scroll.passive="passiveScroll" id="associates">
+      <div class="parallaxxx pic3"></div>
+      <v-container class="px-md-5" :style="`max-width: ${dynamicWidth}px`">
+        <h3 class="text-h5 text-md-h4 text-xl-h3 pa-md-2 px-md-0 px-xl-15 text-justify" style="color: #BEAF67"><span class="bottomLine5">Munkatársaink</span></h3>
+        <div class="d-flex flex-column flex-md-row flex-wrap justify-md-center my-3 mb-lg-7">
+          <div style="color: #BEAF67;" v-for="lawyer in lawyersList.firstLine" :key="lawyer.name" class="mx-auto mx-md-5 mt-lg-5">
+            <AssociateCard :lawyer="lawyer" />
+          </div>
+
+        </div>
+        <div class="d-flex flex-column flex-md-row flex-wrap justify-md-center my-3 mb-lg-7" v-for="lawyer in lawyersList.secondLine" :key="lawyer.name">
+          <AssociateCard :lawyer="lawyer" />
+        </div>
+      </v-container>
+    </v-container>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import AssociatesComponent from '@/components/AssociatesComponent.vue'
+import AssociateCard from '@/components/AssociateCard.vue'
 
 export default {
   name: 'Associates',
+  props: ['dynamicWidth'],
   components: {
-    AssociatesComponent
+    AssociateCard
   },
 
   data: ()=>{
     return {
-      lawyersList: [
+      lawyersList: 
+        {
+          firstLine: [
+            {name: "Dr. Földesné dr. Sipos Judit", pic: "./portraitSnipp2.JPG"},
+            {name: "Dr. Földes Péter Tamás", pic: "./portraitSnipp3.JPG"},
 
-        {parity: 0, name: "Dr. Földesné dr. Sipos Judit", pic: "./portraitSnipp2.JPG", title: "Lawyer Head Master", specialities: ["speciality_1", "speciality_2", "speciality_3", "speciality_4", "speciality_5"], someFill: "Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat."},
-        {parity: 1, name: "Dr. Földes Péter Tamás", pic: "./portraitSnipp3.JPG", title: "Lawyer apprentice", specialities: ["speciality_1", "speciality_2", "speciality_3", "speciality_4", "speciality_5"], someFill: "Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat."},
-
-      ],
-      lawyersList2: [
-        {parity: 0, name: "Molnár Erika", pic: "./portraitSnipp1.jpg", title: "Lawyer", specialities: ["speciality_1", "speciality_2", "speciality_3", "speciality_4", "speciality_5"], someFill: "Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat."},
-      ]
+          ],
+          secondLine: [
+            {name: "Molnár Erika", pic: "./portraitSnipp1.jpg"},
+          ]
+        }
     }
   }
 }
 </script>
+
+<style>
+  .button{
+    font-family: Arial, Helvetica, sans-serif !important;
+  }
+
+  .button .spaced {
+    letter-spacing: .1666666667em;
+  }
+
+  .customFrame{
+    padding: 10px; width: 415px; 
+  }
+
+
+
+</style>
