@@ -1,40 +1,61 @@
 <template>
   <div ref="contact">  
-    <ContactComponent :dynamicWidth="dynamicWidth" :contact="contactMethods" :address="address" :copyIcon="copyIcon" @childAlert="$emit('childAlert',$event)" @childCall="$emit('childCall', 'tel:+52554442')"/>
+    <v-container fluid ma-0 pa-0 id="contact">
+      <div class="parallaxxx" :class="$vuetify.breakpoint.width < 750 ? 'whole' : 'secondHalf'"></div>
+      <v-snackbar v-model="snackbar" :timeout="timeout" color="#115874">
+          <div class="text-center button">
+              Copied to clipboard
+          </div>
+      </v-snackbar>
+      <v-container class="px-md-5" :style="`max-width: ${dynamicWidth}px`">
+          <h3 class="text-h5 text-md-h4 text-xl-h3 pa-md-2 px-md-0 px-xl-15 text-justify" style="color: #BEAF67">Elérhetőségünk</h3>
+      </v-container>
+
+      <v-card flat tile class="white--text text-center ma-0 pa-0" color="#0A4770" >
+          <v-card-text>
+              <v-btn :x-large="$vuetify.breakpoint.lg || $vuetify.breakpoint.xl ? true : false" v-for="icon in icons" :key="icon" color="#F4E8D2" class="mx-4" icon>
+                  <v-icon> {{ icon }} </v-icon>
+              </v-btn>
+          </v-card-text>
+      </v-card>
+      <v-container fluid ma-0 pa-0>
+          <v-card max-height="600">
+              <AddGoogleMap />
+          </v-card>
+      </v-container>
+      <ContactDetails :dynamicWidth="dynamicWidth" :contact="contactMethods" :copyIcon="copyIcon" @childAlert="$emit('childAlert',$event)" @childCall="$emit('childCall', 'tel:+52554442')"/>
+    </v-container>
   </div>
 
 </template>
 
 <script>
 // @ is an alias to /src
-import ContactComponent from '@/components/ContactComponent.vue'
+import ContactDetails from '@/components/ContactDetails.vue'
+import AddGoogleMap from "@/components/AddGoogleMap"
 
 export default {
   name: 'Contact',
   components: {
-    ContactComponent
+    ContactDetails,
+    AddGoogleMap
   },
-  props: ['copyIcon', 'dynamicWidth'],
+  props: ['contactMethods','copyIcon', 'dynamicWidth'],
 
   data: ()=>{
     return {
-      contactMethods: [
-
-        {name: "phone", meta: "+52 554 442", icon: 'phone-outline'},
-        {name: "email", meta: "foldespeter@foldeslegal.hu", icon: "email-multiple-outline"},
-        {name: "address", meta: "4024 Debrecen 5 Piac street", icon: "map-marker-outline"}
-      ],
-      address: {
-        zip: "4287",
-        city: "Debrecen",
-        street: "Csokonai street",
-        number: "5",
-        mapRef: "./mapSample.JPG",
-      },
+      
       social: [
         {id: 3, name: "watsapp", meta: "https://watsapplink/foldes/", icon: "sample3"},
         {id: 4, name: "linkedin", meta: "https://linkedin.com/foldes/", icon: "sample4"}
-      ]
+      ],
+      timeout: 1500,
+      snackbar : false,
+      icons: [
+          'mdi-facebook',
+          'mdi-linkedin',
+      ],
+      mail: 'mdi-email'
     }
   }
 }
