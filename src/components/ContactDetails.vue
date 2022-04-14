@@ -1,9 +1,10 @@
 <template>
-    <v-container fluid ma-0 pa-0 id="contact">
+    <v-container fluid ma-0 pa-0 id="contact" >
         <v-card flat tile class="white--text text-center ma-0 pa-0" color="#0A4770">
-            <div class="d-flex justify-center mx-auto">
-                <div class="d-flex flex-column flex-md-row justify-space-around font-weight-bold body-2 py-5 mb-lg-10">
-                    <div v-for="contactMethod in contact" :key="contactMethod.name" class="mb-3 my-md-auto mx-auto ma-3"
+            <div class="mx-auto" :style="`max-width: ${dynamicWidth}px`">
+                <div class="d-flex flex-column flex-md-row justify-space-between font-weight-bold body-2 py-5 mb-lg-10">
+                    
+                    <div v-for="contactMethod in contact" :key="contactMethod.name" class="mb-3 my-md-auto mx-auto ma-0"
                     :class="contactMethod.contactStyle"
                     :style="$vuetify.breakpoint.lg || $vuetify.breakpoint.xl ? 'letter-spacing: 0.1em; padding: 5px' : 'letter-spacing: 0;'">
                         <div class="pa-2 mx-0">{{ contactMethod.meta }} </div>
@@ -16,6 +17,7 @@
                             </v-btn>
                         </div>
                     </div>
+
                 </div>
             </div>
 
