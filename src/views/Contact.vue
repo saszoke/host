@@ -1,7 +1,7 @@
 <template>
   <div ref="contact">  
     <v-container fluid ma-0 pa-0 id="contact">
-      <div class="parallaxxx" :class="$vuetify.breakpoint.width < 750 ? 'whole' : 'secondHalf'"></div>
+      <div :class="$vuetify.breakpoint.width > 1000 ? 'parallaxxx secondHalf' : ''"></div>
       <v-snackbar v-model="snackbar" :timeout="timeout" color="#115874">
           <div class="text-center button">
               Copied to clipboard

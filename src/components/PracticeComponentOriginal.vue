@@ -1,7 +1,7 @@
 <template>
     <div class="my-5 my-md-5 mx-md-2 practiceContainer pa-5"
 
-        :style="$vuetify.breakpoint.xs ? 'width: 300px; height: auto;' : 'width: 300px; height: 950px;'"
+        :style="$vuetify.breakpoint.xs ? 'width: 300px; height: auto;' : 'height: auto;'"
         >
         <div class="text-start subtitle-1 font-weight-bold button mainTitle" v-text="speciality.mainTheme"></div>
 

@@ -5,7 +5,7 @@
 
         <v-row class="ma-0 pa-0">
             <v-col cols="12" md="12" class="ma-0 pa-0" >
-              <v-img src="random1Snip.jpg" :max-height="$vuetify.breakpoint.height < 799 && $vuetify.breakpoint.width < 1370 ? 350 : 500"> </v-img>
+              <v-img height="100%" eager src="random1Snip.jpg" :max-height="$vuetify.breakpoint.height < 799 && $vuetify.breakpoint.width < 1370 ? 350 : 500"> </v-img>
             </v-col>
             <v-col cols="12" md="12" class="ma-0 pa-0" >
               <div class="body-2 text-lg-body-1 my-3 text-justify" style="color: #0A4770;">Ügyvédi irodánk 26 éve Debrecenben működő immár két generációs vállalkozás. Ügyfeleink nemcsak Debrecenből és környékéről, hanem szinte az ország egész területéről keresnek bennünket az ügyeik vitele és azok megoldása érdekében. 

@@ -1,7 +1,7 @@
 <template>
   <div class="home" ref="home">
     <v-container fluid ma-0 pa-0 style="width: 100%;">
-      <div class="parallaxxx" :class="$vuetify.breakpoint.width < 750 ? 'whole' : 'firstHalf'"></div>
+      <div :class="$vuetify.breakpoint.width > 1000 ? 'parallaxxx firstHalf' : ''"></div>
 
     <v-container class="px-md-5" :style="`max-width: ${dynamicWidth}px`">
       <v-row>

@@ -1,7 +1,7 @@
 <template>
   <div ref="practices">
     <v-container fluid ma-0 pa-0 id="practices">
-      <div class="parallaxxx" :class="$vuetify.breakpoint.width < 750 ? 'whole' : 'secondHalf'"></div>
+      <div :class="$vuetify.breakpoint.width > 1000 ? 'parallaxxx secondHalf':''"></div>
       <v-container class="px-md-5" :style="`max-width: ${dynamicWidth}px`">
 
         <h3 class="text-h5 text-md-h4 text-xl-h3 pa-md-2 px-md-0 px-lg-0 px-xl-15 text-justify mb-5" style="color: #BEAF67"><span class="bottomLine">Szakterületeink</span></h3>

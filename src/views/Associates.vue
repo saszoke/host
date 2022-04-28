@@ -1,7 +1,7 @@
 <template>
   <div ref="associates">
     <v-container fluid ma-0 pa-0 @scroll.passive="passiveScroll" id="associates">
-      <div class="parallaxxx" :class="$vuetify.breakpoint.width < 750 ? 'whole' : 'firstHalf'"></div>
+      <div :class="$vuetify.breakpoint.width > 1000 ? 'parallaxxx firstHalf' : ''"></div>
       <v-container class="px-md-5" :style="`max-width: ${dynamicWidth}px`">
         <h3 class="text-h5 text-md-h4 text-xl-h3 mb-5 mb-md-0 pa-md-2 px-md-0 px-xl-15 text-justify" style="color: #BEAF67"><span class="bottomLine">Munkatársaink</span></h3>
         <div class="d-flex flex-column flex-md-row flex-wrap justify-md-center my-3 mb-lg-7">

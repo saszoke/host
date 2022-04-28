@@ -1,9 +1,11 @@
 <template>
-  <v-app>
+  <v-app v-resize="onResize">
     <v-main>
       <v-container fluid class="ma-0 pa-0" id="home">
         <v-carousel cycle hide-delimiters :height="dynamicCarouselHeight()" :show-arrows="false" id="homeScrollTarget">
-          <v-carousel-item v-for="(item,i) in items" :key="i" :src="item.src"></v-carousel-item>
+          <v-carousel-item v-for="(item,i) in items" :key="i" eager>
+            <v-img :src="item.src" height="100%" eager/>
+          </v-carousel-item>
         </v-carousel>
 
         <Banner @langSwitch='langSwitch' @childAlert="flashAlert($event)" :contactMethods="contactMethods" @openNavInChild="openNavInChild" :menus="menus" :title="title" :englishOn="englishOn" :dynamicSubtitle="dynamicSubtitle" :langSwitch="langSwitch" :copyIcon="copyIcon" ref="banner" />
@@ -19,7 +21,7 @@
         <div>
           <Home :dynamicWidth="dynamicWidth" />
           <About :dynamicWidth="dynamicWidth" />
-          <Practices :dynamicWidth="dynamicWidth" />
+          <PracticesBeta :dynamicWidth="dynamicWidth" />
           <Associates :dynamicWidth="dynamicWidth" />
           <Contact :contactMethods="contactMethods" :dynamicWidth="dynamicWidth" :copyIcon="copyIcon" @childAlert="flashAlert($event)"/>
         </div>
@@ -32,7 +34,8 @@
 import Contact from '@/views/Contact.vue'
 import About from '@/views/About.vue'
 import Home from '@/views/Home.vue'
-import Practices from '@/views/Practices.vue'
+// import Practices from '@/views/Practices.vue'
+import PracticesBeta from '@/views/PracticesBeta.vue'
 import Associates from '@/views/Associates.vue'
 import debounce from 'lodash/debounce'
 import Nav from '@/components/Nav.vue'
@@ -42,7 +45,7 @@ import Banner from '@/components/Banner.vue'
 
 export default {
 
-  components: { Contact, About, Home, Practices, Associates, Nav, Banner },
+  components: { Contact, About, Home, PracticesBeta, Associates, Nav, Banner },
 
   data: function () {
       return {
@@ -61,13 +64,27 @@ export default {
         title: 'Földes',
         picRef: "./csapatSnip2.jpg",
         iconActive: false,
+        offset: -123,
 
         menus: [
-          {dynamicName: ['Home','Kezdőoldal'], id: 0, url: '/home', goto: { el: '#home', offset: 0, onDone: this.doneScroll, duration: 1500 } },
-          {dynamicName: ['About','Rólunk'], id: 1, url: '/about', goto: { el: '#about', offset: 0, onDone: this.doneScroll, duration: 1500 }},
-          {dynamicName: ['Practies','Szakterületeink'], id: 2, url: '/practices', goto: { el: '#practices', offset: 0, onDone: this.doneScroll, duration: 1500 }},
-          {dynamicName: ['Lawyers','Munkatársaink'], id: 3, url: '/associates', goto: { el: '#associates', offset: 0, onDone: this.doneScroll, duration: 1500 }},
-          {dynamicName: ['Contact','Kapcsolat'], id: 4, url: '/contact', goto: { el: '#contact', offset: 0, onDone: this.doneScroll, duration: 1500 }}
+          {dynamicName: ['Home','Kezdőoldal'], hasSubMenu: false, id: 0, url: '/home', goto: { el: '#home', offset: this.getOffset, onDone: this.doneScroll, duration: 1500 } },
+          {dynamicName: ['About','Rólunk'], hasSubMenu: false, id: 1, url: '/about', goto: { el: '#about', offset: this.getOffset, onDone: this.doneScroll, duration: 1500 }},
+          {
+            dynamicName: ['Practies','Szakterületeink'], 
+            hasSubMenu: true, 
+            subMenus: [
+              {name: 'Cégjog', goto: { el: '#cegjog', offset: this.getOffset, onDone: this.doneScroll, duration: 1500 }}, 
+              {name: 'Gazdasági ügyek', goto: { el: '#gazdjog', offset: this.getOffset, onDone: this.doneScroll, duration: 1500 }}, 
+              {name: 'Ingatlan ügyek', goto: { el: '#ingatlanjog', offset: this.getOffset, onDone: this.doneScroll, duration: 1500 }}, 
+              {name: 'Civil szervezetek', goto: { el: '#civiljog', offset: this.getOffset, onDone: this.doneScroll, duration: 1500 }}, 
+              {name: 'Védjegy ügyek', goto: { el: '#vedjog', offset: this.getOffset, onDone: this.doneScroll, duration: 1500 }} 
+            ],
+            id: 2, 
+            url: '/practices', 
+            goto: { el: '#practices', offset: this.getOffset, onDone: this.doneScroll, duration: 1500 }
+          },
+          {dynamicName: ['Lawyers','Munkatársaink'], hasSubMenu: false, id: 3, url: '/associates', goto: { el: '#associates', offset: this.getOffset, onDone: this.doneScroll, duration: 1500 }},
+          {dynamicName: ['Contact','Kapcsolat'], hasSubMenu: false, id: 4, url: '/contact', goto: { el: '#contact', offset: this.getOffset, onDone: this.doneScroll, duration: 1500 }}
           ],
         drawer: false,
         group: null,
@@ -101,6 +118,13 @@ export default {
   },
 
   methods: {
+    getOffset(){
+      return this.$vuetify.breakpoint.width > 959 ? -83 : -123;
+    },
+    onResize () {
+      this.offset = this.$vuetify.breakpoint.width > 959 ? -123 : -83;
+      console.log(this.offset)
+      },
     openNavInChild(){
           this.$refs.nav.openNav()
         },
@@ -134,9 +158,9 @@ export default {
       return dHeight
     },
     doneScroll(elem){
-      // console.log(top)
       try{
-        this.$router.push(`/${elem.id}`);
+        console.log(elem)
+        // this.$router.push(`/${elem.id}`);
         // console.log('skipping router push',elem)
       } catch(err){
         // console.log('Rerouting avoided. Already on route.')
@@ -179,27 +203,27 @@ export default {
     }
   },
   mounted() {
-    // console.log('wtf?: ', this.kutyafasza)
+    this.onResize()
     this.handleDebouncedScroll = debounce(this.handleScroll, 100);
     document.addEventListener('scroll', this.handleDebouncedScroll);
     document.addEventListener('wheel', this.handleDebouncedScroll);
 
-    setTimeout(() => {
-      var scrollTarget = null
-      try{
-        scrollTarget = '#' + this.$route.name.toLowerCase();
-        // console.log('Initiating scroll to ', scrollTarget);
-        this.$vuetify.goTo(scrollTarget, {
-              duration: 2500,
-              offset: 0,
-              easing: 'easeInOutCubic'
-            })
-      } catch(err){
-        // FOR DEVELOPMENT DEBUGGING
-        // console.log('Failed to scroll to ', scrollTarget)
-        // console.log(err)
-      }
-    }, 1500);
+    // setTimeout(() => {
+    //   var scrollTarget = null
+    //   try{
+    //     scrollTarget = '#' + this.$route.name.toLowerCase();
+    //     // console.log('Initiating scroll to ', scrollTarget);
+    //     this.$vuetify.goTo(scrollTarget, {
+    //           duration: 2500,
+    //           offset: 0,
+    //           easing: 'easeInOutCubic'
+    //         })
+    //   } catch(err){
+    //     // FOR DEVELOPMENT DEBUGGING
+    //     // console.log('Failed to scroll to ', scrollTarget)
+    //     // console.log(err)
+    //   }
+    // }, 1500);
 
   },
   updated(){
