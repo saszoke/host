@@ -8,8 +8,8 @@
                 <v-col cols="12" md="6">
                     <v-container fluid class="mx-0 px-0 d-flex justify-center justify-md-end" >
                         <div class="d-flex flex-column justify-md-space-around px-md-5" height="100%" style="max-width:500px;">
-                            <div v-for="speciality in specialities" :key="speciality.mainTheme">
-                                <PracticeComponentOriginal :speciality="speciality" :id="speciality.goto" />
+                            <div v-for="speciality in specialities" :key="speciality.mainTheme" :id="speciality.goto">
+                                <PracticeComponentOriginal :speciality="speciality"  />
                             </div>
                         </div>
 
@@ -119,20 +119,18 @@ import PracticeComponentOriginal from '@/components/PracticeComponentOriginal.vu
     }
 
     .econtainer {
-    display: flex;
-    align-items: flex-start;
-    height: 2100px;
-    
-    /* margin-bottom: 1000px; */
+        display: flex;
+        align-items: flex-start;
+        height: 2100px;
     }
 
     .element {
-    position: sticky;
-    top: 10%;
+        position: sticky;
+        top: 10%;
     }
     .minified{
-    display: flex;
-    align-items: flex-start;
+        display: flex;
+        align-items: flex-start;
     }
 
     .mainTitle{

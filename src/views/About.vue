@@ -1,7 +1,7 @@
 <template>
   <div ref="about">
     <v-container class="px-md-5" id="about" fluid :style="`max-width: ${dynamicWidth}px`">
-      <h3 class="text-h5 text-md-h4 text-xl-h3 pa-md-2 px-md-0 px-xl-15 text-justify  mb-10" style="color: #BEAF67"> <span class="bottomLine">Rólunk</span></h3>
+      <h3 class="text-h5 text-md-h4 text-xl-h3 pa-md-2 px-md-0 text-justify  mb-10" style="color: #BEAF67"> <span class="bottomLine">Rólunk</span></h3>
 
         <v-row class="ma-0 pa-0">
             <v-col cols="12" md="12" class="ma-0 pa-0" >

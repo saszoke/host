@@ -97,7 +97,7 @@ export default {
             src: './random3Snip.jpg',
           },
           {
-            src: './random1Snip.jpg',
+            src: './csapatSnip3.jpg',
           },
           {
             src: './random2Snip.jpg',

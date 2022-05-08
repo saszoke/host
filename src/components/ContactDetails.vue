@@ -1,6 +1,6 @@
 <template>
-    <v-container fluid ma-0 pa-0 id="contact" >
-        <v-card flat tile class="white--text text-center ma-0 pa-0" color="#0A4770">
+    <v-container fluid ma-0 pa-0 id="contact">
+        <v-card flat tile class="white--text text-center ma-0 pa-0" style="background-image: url('./textmosaic.jpg'); background-size: cover">
             <div class="mx-auto" :style="`max-width: ${dynamicWidth}px`">
                 <div class="d-flex flex-column flex-md-row justify-space-between font-weight-bold body-2 py-5 mb-lg-10">
                     
@@ -21,7 +21,6 @@
                 </div>
             </div>
 
-            <v-divider></v-divider>
 
             <v-card-text class="subtitle-2 font-weight-bold text-uppercase overline" style="color: #F4E8D2">
                 {{ new Date().getFullYear() }} — <strong v-scroll-to="{ el: '#home', offset: 0, onDone: this.doneScroll, duration: 1500 }" style="cursor: pointer">Földes ügyvédi iroda</strong>
