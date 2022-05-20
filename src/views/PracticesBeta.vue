@@ -3,8 +3,7 @@
         <v-container fluid pa-0 ma-0 id="practices">
             <v-container pa-0 fluid style="max-width:1000px">
                 <h3 class="text-h5 text-md-h4 text-xl-h3 pa-md-0 px-3 px-md-5 px-lg-5 text-justify mb-0" style="color: #BEAF67"><span class="bottomLine">Szakterületeink</span></h3>
-            </v-container>
-            <v-row no-gutters class="d-flex flex-column-reverse justify-space-between flex-md-row flex-md-center">
+            <!-- <v-row no-gutters class="d-flex flex-column-reverse justify-space-between flex-md-row flex-md-center">
                 <v-col cols="12" md="6">
                     <v-container fluid class="mx-0 px-0 d-flex justify-center justify-md-end" >
                         <div class="d-flex flex-column justify-md-space-around px-md-5" height="100%" style="max-width:500px;">
@@ -12,7 +11,6 @@
                                 <PracticeComponentOriginal :speciality="speciality"  />
                             </div>
                         </div>
-
                     </v-container>
                 </v-col>
                 <v-col md="6" v-if="$vuetify.breakpoint.width > 960">
@@ -24,7 +22,13 @@
                         </v-col>
                     </v-row>
                 </v-col>
-            </v-row>
+            </v-row> -->
+
+                <div v-for="speciality in specialities" :key="speciality.mainTheme" :id="speciality.goto">
+                    <PracticeComponentOriginal :speciality="speciality"/>
+                </div>
+            </v-container>
+
         </v-container>
     </template>
 

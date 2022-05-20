@@ -1,6 +1,6 @@
 <template>
     <v-container fluid ma-0 pa-0 id="contact">
-        <v-card flat tile class="white--text text-center ma-0 pa-0" style="background-image: url('./textmosaic.jpg'); background-size: cover">
+        <v-card flat tile class="white--text text-center ma-0 pa-0" style="background-image: url('./mosaicmod4.png'); background-size: contain; background-repeat:repeat-x">
             <div class="mx-auto" :style="`max-width: ${dynamicWidth}px`">
                 <div class="d-flex flex-column flex-md-row justify-space-between font-weight-bold body-2 py-5 mb-lg-10">
                     

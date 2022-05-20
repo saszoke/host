@@ -1,6 +1,6 @@
 <template>
     <div style="color: #BEAF67;" class="mx-auto mx-md-5 mt-lg-5">
-        <div class="pa-0 text-h6 text-md-h5 text-center mb-1">{{ lawyer.name }}</div>
+        <div class="pa-0 text-h6 text-md-h5 text-center mb-1" style="color: #0A4770;">{{ lawyer.name }}</div>
         <div class="" style="color:#0A4770">
             <div class="h6 rounded-t-lg pt-1" style="background-color: #BEAF67; color: white; display:block;" >{{ lawyer.title }}</div>
         </div>

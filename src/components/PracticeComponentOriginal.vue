@@ -1,7 +1,7 @@
 <template>
-    <div class="my-5 my-md-5 mx-md-2 practiceContainer pa-5"
+    <div class="my-5 my-md-5 mx-auto practiceContainer pa-5"
 
-        :style="$vuetify.breakpoint.xs ? 'width: 300px; height: auto;' : 'height: auto;'"
+        :style="$vuetify.breakpoint.xs ? 'width: 300px; height: auto;' : 'width: 400px; height: auto;'"
         >
         <div class="text-start subtitle-1 font-weight-bold button mainTitle" v-text="speciality.mainTheme"></div>
 
@@ -10,7 +10,7 @@
             <div class="listDecoration"></div>
         </v-col>
         <v-col cols="10">
-            <div class="body-2 text-lg-body-2 text-left mt-0" v-text="subtitle.title"></div>
+            <div class="body-2 text-lg-body-2 text-left mt-0" v-text="subtitle.title" style="color: #0A4770;"></div>
         </v-col>
         </v-row>
 
