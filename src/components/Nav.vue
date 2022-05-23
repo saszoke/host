@@ -2,6 +2,7 @@
     <!-- NAV DRAWER STUFF -->
     <v-navigation-drawer v-model="drawer" absolute temporary sticky color="#F4E8D2" style="position:fixed; top:0; left:0;">
         <div class="d-flex flex-column" style="height: 100vh; overflow-y: hidden" :class="$vuetify.breakpoint.height <= 720 ? 'justify-start':''">
+            <!-- MARKER eredeti: #115874-->
             <div class="text-left" style="background-color: #115874" :class="$vuetify.breakpoint.height > 720 ? 'twoThird d-flex flex-column justify-center':'py-7'">
                 <v-list nav class="button text-left">
                     <!-- <v-list-item-group v-if="$vuetify.breakpoint.height < 750" style="color: #F4E8D2">
@@ -28,7 +29,7 @@
                 </v-list>
             </div>
 
-
+            <!-- MARKER eredeti: #F4E8D2 -->
             <div class="lighten-4" :style='`background-color: #F4E8D2;`' :class="$vuetify.breakpoint.height > 720 ? 'oneThird':'py-7'">
                 <div v-for="contactMethod in contactMethods" :key="contactMethod.meta">
                     <div style="background-color: background-color: #F4E8D2">

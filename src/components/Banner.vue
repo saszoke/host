@@ -1,4 +1,5 @@
 <template>
+<!-- eredeti: #0A4770 -->
     <v-banner sticky color="#0A4770" elevation="4" style="padding:0;">
         <div class="d-flex flex-column flex-md-row justify-space-around">
 

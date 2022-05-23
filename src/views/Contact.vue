@@ -11,6 +11,7 @@
           <h3 class="text-h5 text-md-h4 text-xl-h3 pa-md-2 px-md-0 text-justify" style="color: #BEAF67">Elérhetőségünk</h3>
       </v-container>
 
+      <!-- MARKER eredeti: #0f344f -->
       <v-card flat tile class="white--text text-center ma-0 pa-0" color="#0f344f" >
           <v-card-text>
               <v-btn :x-large="$vuetify.breakpoint.lg || $vuetify.breakpoint.xl ? true : false" v-for="icon in icons" :key="icon" color="#F4E8D2" class="mx-4" icon>
