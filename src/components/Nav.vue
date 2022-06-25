@@ -1,16 +1,8 @@
 <template>
-    <!-- NAV DRAWER STUFF -->
     <v-navigation-drawer v-model="drawer" absolute temporary sticky color="#F4E8D2" style="position:fixed; top:0; left:0;">
-        <div class="d-flex flex-column" style="height: 100vh; overflow-y: hidden" :class="$vuetify.breakpoint.height <= 720 ? 'justify-start':''">
-            <!-- MARKER eredeti: #115874-->
-            <div class="text-left" style="background-color: #115874" :class="$vuetify.breakpoint.height > 720 ? 'twoThird d-flex flex-column justify-center':'py-7'">
+        <div class="d-flex flex-column" style="height: 100vh; overflow-y: auto" :class="$vuetify.breakpoint.height <= 720 ? 'justify-start':''">
+            <div class="text-left" style="background-color: #09393d" :class="$vuetify.breakpoint.height > 720 ? 'twoThird d-flex flex-column justify-center':'py-7'">
                 <v-list nav class="button text-left">
-                    <!-- <v-list-item-group v-if="$vuetify.breakpoint.height < 750" style="color: #F4E8D2">
-                        <v-list-item class="accent--text" v-for="(item, i) in menus" :key="i" @click.stop="drawer = !drawer">
-                            <v-list-item-title class="font-weight-bold body-2" v-scroll-to="item.goto">{{ englishOn ? item.dynamicName[0] : item.dynamicName[1] }}</v-list-item-title>
-                        </v-list-item>
-                    </v-list-item-group> -->
-
                     <div v-for="(item, i) in menus" :key="i">
                         <v-list-item :value="false" v-if="!item.hasSubMenu" @click.stop="drawer = !drawer" class="accent--text" :class="item.dynamicName[0] == 'Contact' ? '' :''">
                             <v-list-item-title class="font-weight-bold body-2" v-scroll-to="item.goto">{{ englishOn ? item.dynamicName[0] : item.dynamicName[1] }}</v-list-item-title>
@@ -29,17 +21,16 @@
                 </v-list>
             </div>
 
-            <!-- MARKER eredeti: #F4E8D2 -->
             <div class="lighten-4" :style='`background-color: #F4E8D2;`' :class="$vuetify.breakpoint.height > 720 ? 'oneThird':'py-7'">
                 <div v-for="contactMethod in contactMethods" :key="contactMethod.meta">
                     <div style="background-color: background-color: #F4E8D2">
                         <div class="d-flex flex-column justify-space-between">
-                            <div class="py-2 mr-2 body-2 button" style="color: #115874; font-weight: bold;">{{ contactMethod.meta }}</div>
+                            <div class="py-2 mr-2 body-2 button" style="color: #09393d; font-weight: bold;">{{ contactMethod.meta }}</div>
                             <div>
-                                <v-btn icon style="color: #115874; font-weight: bold;" :href="contactMethod.href" :target="contactMethod.target">
+                                <v-btn icon style="color: #09393d; font-weight: bold;" @click="$emit('scroll2map',contactMethod.name)" :href="contactMethod.href" :target="contactMethod.target">
                                     <v-icon> mdi-{{ contactMethod.icon }} </v-icon>
                                 </v-btn>
-                                <v-btn icon style="color: #115874; font-weight: bold;" @click="$emit('childAlert',contactMethod.name)">
+                                <v-btn icon style="color: #09393d; font-weight: bold;" @click="$emit('childAlert',contactMethod.name)">
                                     <v-icon class="copy">{{copyIcon}}</v-icon>
                                 </v-btn>
                             </div>
@@ -64,6 +55,7 @@ export default {
         openNav(){
             this.drawer = !this.drawer
         }
+        
     }
 }
 </script>

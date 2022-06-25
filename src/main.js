@@ -1,9 +1,8 @@
 import Vue from 'vue'
 import App from './App.vue'
 import vuetify from '@/plugins/vuetify'
-import router from './router'
 import VueScrollTo from 'vue-scrollto';
-import * as VueGoogleMaps from "vue2-google-maps" // Import package
+import * as VueGoogleMaps from "vue2-google-maps" 
 
 
 Vue.config.productionTip = false
@@ -21,6 +20,5 @@ Vue.use(VueScrollTo, {
 new Vue({
   el: '#app',
   vuetify,
-  router,
   render: h => h(App)
 }).$mount('#app')

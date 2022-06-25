@@ -12,7 +12,7 @@
       </v-container>
 
       <!-- MARKER eredeti: #0f344f -->
-      <v-card flat tile class="white--text text-center ma-0 pa-0" color="#0f344f" >
+      <v-card flat tile class="white--text text-center ma-0 pa-0" color="#09393d" >
           <v-card-text>
               <v-btn :x-large="$vuetify.breakpoint.lg || $vuetify.breakpoint.xl ? true : false" v-for="icon in icons" :key="icon" color="#F4E8D2" class="mx-4" icon>
                   <v-icon> {{ icon }} </v-icon>
@@ -21,7 +21,7 @@
       </v-card>
       <v-container fluid ma-0 pa-0>
           <v-card max-height="400">
-              <AddGoogleMap />
+              <AddGoogleMap ref="gmap" />
           </v-card>
       </v-container>
       <ContactDetails :dynamicWidth="dynamicWidth" :contact="contactMethods" :copyIcon="copyIcon" @childAlert="$emit('childAlert',$event)" @childCall="$emit('childCall', 'tel:+52554442')"/>

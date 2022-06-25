@@ -6,7 +6,7 @@
     <v-container class="px-md-5" :style="`max-width: ${dynamicWidth}px`">
       <v-row>
         <v-col cols="12" md="6" class="mx-0 px-0 pr-md-5">
-          <div class="body-2 text-lg-body-1 text-justify mx-md-0 my-3" style="color: #0A4770;">
+          <div class="body-2 text-lg-body-1 text-justify mx-md-0 my-3" style="color: #09393d;">
             <span style="color: #BEAF67" class="font-weight-bold">Köszöntjük honlapunkon</span> akkor is, ha csak véletlenül talált ránk és köszöntjük, ha célirányosan bennünket keresett.  Amit vállalunk: Önre és az ügyére koncentrálva a lehető leggyorsabban, szakmailag helytállóan fogunk dolgozni az Ön, a családja és a vállalkozása számára. 
           </div>
         </v-col>
