@@ -1,19 +1,18 @@
 <template>
-<!-- eredeti: #0A4770 -->
-    <v-banner sticky color="#0e5c60" elevation="4"  :height="dynamicBannerHeight()" class="d-flex flex-column justify-center">
+    <v-banner sticky color="#0e5c60" elevation="4"  :height="dynamicBannerHeight()" class="d-flex flex-column justify-center my-0 py-0">
         <div class="d-flex flex-column flex-md-row justify-space-around" style="max-width: 1000px; margin: 0 auto;">
 
             <!-- FIRST CHILD BANNER -->
-            <div class="d-flex justify-space-between justify-sm-space-around mb-2 mb-md-0 mr-2 mr-md-0">
+            <div class="d-flex justify-space-between justify-sm-space-around my-md-0 py-md-0 mb-2 mr-2 mr-md-0">
                 <div class="mr-5 mr-md-0 mx-md-0 py-auto my-auto order-md-0">
                 <v-app-bar-nav-icon  color="#F4E8D2" @click.stop="openNavInChild"></v-app-bar-nav-icon>
                 </div>
 
                 <div class=" mx-md-15 order-md-2 py-1" style="font-family: Galliard-Std-Roman">
-                <div class="align-center order-lg-first text-h5 text-md-h4 text-xl-h3 font-weight-bold  my-auto"
+                <div id="mainTitle" class="align-center order-lg-first text-h5 text-md-h4 text-xl-h3 font-weight-bold mb-0 pb-0"
                     v-scroll-to="menus[0].goto" style="cursor: pointer; color: #F4E8D2;" v-text="title">
                 </div>
-                <div class="subtitle-2" style="cursor: pointer; color: #F4E8D2;" v-text="englishOn ? dynamicSubtitle[0] : dynamicSubtitle[1]"></div>
+                <div id="subTitle" class="subtitle-2 mt-0 pt-0" style="cursor: pointer; color: #F4E8D2;" v-text="englishOn ? dynamicSubtitle[0] : dynamicSubtitle[1]"></div>
                 </div>
                 
 
@@ -74,13 +73,16 @@ export default {
 
         dynamicBannerHeight(){
             var dHeight = ""
-            if( (this.$vuetify.breakpoint.height > 725) && (this.$vuetify.breakpoint.name == "md" || this.$vuetify.breakpoint.name == "lg" || this.$vuetify.breakpoint.name == "xl")){
+            if( 
+                ((this.$vuetify.breakpoint.height > 600) && (this.$vuetify.breakpoint.name == "md")) ||
+                ((this.$vuetify.breakpoint.height > 700) && (this.$vuetify.breakpoint.name == "lg")) ||
+                ((this.$vuetify.breakpoint.height > 800) && (this.$vuetify.breakpoint.name == "xl"))){
                 switch (this.$vuetify.breakpoint.name) {
                     case "md":
                     dHeight = '10vh';
                     break;
                     case "lg":
-                    dHeight = '8vh';
+                    dHeight = '10vh';
                     break;
                     case "xl":
                     dHeight = '8vh';
@@ -88,9 +90,44 @@ export default {
                 }
             }
 
-
             return dHeight
             },
     }
 }
 </script>
+
+<style>
+#mainTitle{
+    margin-top: 0;
+    margin-bottom:0;
+    padding-top:0;
+    padding-bottom:0;
+    -webkit-margin-top: 0%;
+    -webkit-margin-bottom: 0%;
+    -webkit-padding-top: 0%;
+    -webkit-padding-bottom: 0%;
+    -moz-margin-top: 0;
+    -moz-margin-bottom: 0;
+    -moz-padding-top: 0;
+    -moz-padding-bottom: 0;
+}
+
+#subTitle{
+    margin-top: 0;
+    margin-bottom:0;
+    padding-top:0;
+    padding-bottom:0;
+    -webkit-margin-top: 0%;
+    -webkit-margin-bottom: 0%;
+    -webkit-padding-top: 0%;
+    -webkit-padding-bottom: 0%;
+    -moz-margin-top: 0;
+    -moz-margin-bottom: 0;
+    -moz-padding-top: 0;
+    -moz-padding-bottom: 0;
+}
+
+
+
+
+</style>

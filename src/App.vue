@@ -94,7 +94,7 @@ export default {
             src: './csapatSnip2.jpg',
           },
           {
-            src: './csapatSnip3.jpg',
+            src: './csapatSnip1.jpg',
           },
           {
             src: './random2Snip.jpg',
@@ -133,13 +133,13 @@ export default {
           dHeight = '30vh';
           break;
         case "sm":
-          dHeight = '50vh';
+          dHeight = '45vh';
           break;
         case "md":
           dHeight = '90vh';
           break;
         case "lg":
-          dHeight = '92vh';
+          dHeight = '90vh';
           break;
         case "xl":
           dHeight = '92vh';
@@ -149,10 +149,10 @@ export default {
       if ((this.$vuetify.breakpoint.name == "xs" || this.$vuetify.breakpoint.name == "sm") && this.$vuetify.breakpoint.width > 500 && this.$vuetify.breakpoint.height < 425 ) dHeight = '100vh'
 
       if (this.$vuetify.breakpoint.width > 1300 && this.$vuetify.breakpoint.height < 400) dHeight = '0vh';
-      // console.log('<<<<<<   You can ignore this, this is for development purposes only. >>>>>>')
-      // console.log(`<<<<<<   Viewport width:  ${this.$vuetify.breakpoint.width} >>>>>>`)
-      // console.log(`<<<<<<   Viewport height:  ${this.$vuetify.breakpoint.height} >>>>>>`)
-      // console.log('<<<<<<   You can ignore this, this is for development purposes only. >>>>>>')
+      console.log('<<<<<<   You can ignore this, this is for development purposes only. >>>>>>')
+      console.log(`<<<<<<   Viewport width:  ${this.$vuetify.breakpoint.width} >>>>>>`)
+      console.log(`<<<<<<   Viewport height:  ${this.$vuetify.breakpoint.height} >>>>>>`)
+      console.log('<<<<<<   You can ignore this, this is for development purposes only. >>>>>>')
 
       return dHeight
     },
