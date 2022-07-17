@@ -9,10 +9,10 @@
                 </div>
 
                 <div class=" mx-md-15 order-md-2 py-1" style="font-family: Galliard-Std-Roman">
-                <div id="mainTitle" class="align-center order-lg-first text-h5 text-md-h4 text-xl-h3 font-weight-bold mb-0 pb-0"
+                <div id="mainTitle" class="align-center order-lg-first text-h4 text-xl-h3 font-weight-bold mb-0 pb-0"
                     v-scroll-to="menus[0].goto" style="cursor: pointer; color: #F4E8D2;" v-text="title">
                 </div>
-                <div id="subTitle" class="subtitle-2 mt-0 pt-0" style="cursor: pointer; color: #F4E8D2;" v-text="englishOn ? dynamicSubtitle[0] : dynamicSubtitle[1]"></div>
+                <div class="subtitle-2 mt-0 pt-0" style="cursor: pointer; color: #F4E8D2;" v-text="englishOn ? dynamicSubtitle[0] : dynamicSubtitle[1]"></div>
                 </div>
                 
 
@@ -95,39 +95,3 @@ export default {
     }
 }
 </script>
-
-<style>
-#mainTitle{
-    margin-top: 0;
-    margin-bottom:0;
-    padding-top:0;
-    padding-bottom:0;
-    -webkit-margin-top: 0%;
-    -webkit-margin-bottom: 0%;
-    -webkit-padding-top: 0%;
-    -webkit-padding-bottom: 0%;
-    -moz-margin-top: 0;
-    -moz-margin-bottom: 0;
-    -moz-padding-top: 0;
-    -moz-padding-bottom: 0;
-}
-
-#subTitle{
-    margin-top: 0;
-    margin-bottom:0;
-    padding-top:0;
-    padding-bottom:0;
-    -webkit-margin-top: 0%;
-    -webkit-margin-bottom: 0%;
-    -webkit-padding-top: 0%;
-    -webkit-padding-bottom: 0%;
-    -moz-margin-top: 0;
-    -moz-margin-bottom: 0;
-    -moz-padding-top: 0;
-    -moz-padding-bottom: 0;
-}
-
-
-
-
-</style>

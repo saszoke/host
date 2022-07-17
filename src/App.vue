@@ -303,4 +303,8 @@ input:checked + .slider:before {
 #homeScrollTarget > div > div > div > div > div > div.v-image__image.v-image__image--cover {
   background-position: top !important;
 }
+
+.v-banner--is-mobile.v-banner--sticky{
+  top: -0.5px !important;
+}
 </style>
